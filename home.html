@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abegail E. Ramiro – Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sky: #4EC9E1;
+      --sky-light: #A8E6F0;
+      --sky-dark: #1AACCC;
+      --dark: #1a1a2e;
+      --text: #2d2d2d;
+      --muted: #6b7280;
+      --bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 64px;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(78,201,225,0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 46px;
+      height: 46px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 8px;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover { color: #74ccff; }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: #74ccff;
+      border-radius: 2px;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: calc(100vh - 90px);
+      padding: 60px 64px 40px;
+      gap: 40px;
+    }
+
+    /* LEFT */
+    .hero-left {
+      flex: 0 0 50%;
+      max-width: 520px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .greeting {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 700;
+      color: #74ccff;
+      line-height: 1.15;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+
+    .hero-bio {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+      text-align: justify;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+    .btn-hire {
+      display: inline-block;
+      padding: 14px 42px;
+      background: #74ccff;
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.55s forwards;
+      box-shadow: 0 4px 20px rgba(78,201,225,0.35);
+    }
+
+    .btn-hire:hover {
+      background: #1e6c9a;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(78,201,225,0.45);
+    }
+
+    /* RIGHT */
+    .hero-right {
+      flex: 0 0 48%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      opacity: 0;
+      animation: fadeIn 0.9s ease 0.3s forwards;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: 360px;
+      height: 400px;
+    }
+
+    /* Decorative sky rectangle behind image */
+    .deco-rect {
+      position: absolute;
+      top: 0; right: 0;
+      width: 78%;
+      height: 88px;
+      background: var(--sky-light);
+      border-radius: 6px;
+      z-index: 0;
+    }
+
+    /* Circle frame */
+    .circle-frame {
+      position: absolute;
+      top: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 340px;
+      border-radius: 50%;
+      border: 3px solid var(--sky);
+      overflow: hidden;
+      z-index: 1;
+      background: #e8f7fb;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    /* Placeholder person silhouette */
+    .placeholder-person {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      
+    }
+
+    .placeholder-person svg {
+      opacity: 0.5;
+    }
+
+    /* Social icons */
+    .social-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: var(--dark);
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
+
+    .social-links a:hover {
+      background: var(--sky);
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+    .social-links svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .hero { flex-direction: column-reverse; padding: 40px 28px; min-height: auto; }
+      .hero-left { max-width: 100%; flex: none; }
+      .hero-right { flex: none; width: 100%; }
+      .photo-wrap { width: 280px; height: 320px; margin: 0 auto; }
+      .circle-frame { width: 250px; height: 270px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <!-- PIXORA Logo SVG -->
+      <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85"/>
+        <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85"/>
+      </svg>
+      <div class="logo-text">
+        <span>PIXORA</span>
+        <span>Design · Code · Create</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#" class="active">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <!-- LEFT -->
+    <div class="hero-left">
+      <p class="greeting">Hi I am</p>
+      <h1 class="hero-name">Abegail E. Ramiro</h1>
+      <p class="hero-bio">
+        I build responsive, user-friendly, and modern websites and mobile applications
+        that deliver great user experiences and clean functionality. I focus on combining
+        design and logic to create efficient digital solutions. Let's build something
+        great together.
+      </p>
+      <a href="#contact" class="btn-hire">Hire Me</a>
+    </div>
+
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <div class="photo-wrap">
+      
+          <div class="placeholder-person">
+            <!-- Generic person silhouette -->
+            <img src="pic.png" alt="" height="400" width="370">
+              <!-- Head -->
+              
+              <!-- Body -->
+             
+           
+          </div>
+       
+      </div>
+
+      <!-- Social Icons -->
+      <div class="social-links">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/172Eoh1SG1/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn (replaced Twitter) -->
+        <a href="https://www.linkedin.com/in/abegail-ramiro/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/pixora_ph/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+  </section>
+
+</body>
+</html>

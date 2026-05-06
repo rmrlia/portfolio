@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me – Abegail E. Ramiro</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sky: #74ccff;
+      --sky-light: #A8E6F0;
+      --sky-dark: #74ccff;
+      --dark: #1a1a2e;
+      --text: #2d2d2d;
+      --muted: #6b7280;
+      --bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 64px;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(78,201,225,0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon { width: 46px; height: 46px; }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 8px;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover { color: #74ccff; }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: #74ccff;
+      border-radius: 2px;
+    }
+
+    /* ── ABOUT SECTION ── */
+    .about {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      min-height: calc(100vh - 90px);
+      padding: 70px 64px 60px;
+      gap: 60px;
+    }
+
+    /* LEFT – photo */
+    .about-left {
+      flex: 0 0 42%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeIn 0.9s ease 0.2s forwards;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: 360px;
+      height: 420px;
+    }
+
+    .deco-rect {
+      position: absolute;
+      top: 0; left: 0;
+      width: 80%;
+      height: 90px;
+      background: var(--sky-light);
+      border-radius: 6px;
+      z-index: 0;
+    }
+
+    .circle-frame {
+      position: absolute;
+      top: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 360px;
+      border-radius: 50%;
+      border: 3px solid var(--sky);
+      overflow: hidden;
+      z-index: 1;
+      background: #e8f7fb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .placeholder-person {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(160deg, #daf3f8 0%, #c2edf6 100%);
+    }
+
+    .placeholder-person svg { opacity: 0.5; }
+
+    /* RIGHT – content */
+    .about-right {
+      flex: 1;
+      padding-top: 10px;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .about-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(40px, 5vw, 64px);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 28px;
+      line-height: 1.1;
+    }
+
+    .about-bio {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+      margin-bottom: 40px;
+    }
+
+    /* ── SKILL BARS ── */
+    .skills { display: flex; flex-direction: column; gap: 22px; }
+
+    .skill-item { display: flex; flex-direction: column; gap: 8px; }
+
+    .skill-label {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .skill-track {
+      position: relative;
+      height: 10px;
+      background: #e5e7eb;
+      border-radius: 99px;
+      overflow: visible;
+    }
+
+    .skill-fill {
+      height: 100%;
+      border-radius: 99px;
+      background: var(--sky);
+      position: relative;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* Thumb circle at end of bar */
+    .skill-fill::after {
+      content: '';
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #fff;
+      border: 3px solid var(--sky);
+      box-shadow: 0 2px 8px rgba(78,201,225,0.3);
+    }
+
+    /* Animate bars on load */
+    .skill-fill { width: 0; }
+    .skill-fill.animate { animation: growBar 1.2s cubic-bezier(0.4,0,0.2,1) forwards; }
+
+    @keyframes growBar {
+      from { width: 0; }
+      to   { width: var(--target-width); }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .about { flex-direction: column; padding: 40px 28px; min-height: auto; }
+      .about-left { flex: none; width: 100%; }
+      .photo-wrap { width: 280px; height: 340px; margin: 0 auto; }
+      .circle-frame { width: 250px; height: 280px; }
+      .about-right { padding-top: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85"/>
+        <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85"/>
+      </svg>
+      <div class="logo-text">
+        <span>PIXORA</span>
+        <span>Design · Code · Create</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html" class="active">About Me</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- ABOUT -->
+  <section class="about">
+
+    <!-- LEFT – photo placeholder -->
+    <div class="about-left">
+      <div class="photo-wrap">
+       
+       <img src="pic.png" height="400" width="370" alt="">
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT – content + skills -->
+    <div class="about-right">
+      <h2 class="about-title">About Me</h2>
+
+      <p class="about-bio">
+        I am a passionate web and mobile developer focused on creating clean, responsive,
+        and functional digital solutions. I specialize in turning ideas into real-world
+        applications that are both visually appealing and highly usable. I value clean
+        design, good user experience, and well-structured code.
+      </p>
+
+      <div class="skills">
+
+        <div class="skill-item">
+          <span class="skill-label">UX</span>
+          <div class="skill-track">
+            <div class="skill-fill" style="--target-width: 90%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-label">Website Design</span>
+          <div class="skill-track">
+            <div class="skill-fill" style="--target-width: 88%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-label">App Design</span>
+          <div class="skill-track">
+            <div class="skill-fill" style="--target-width: 93%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-label">Graphic Design</span>
+          <div class="skill-track">
+            <div class="skill-fill" style="--target-width: 91%"></div>
+          </div>
+        </div>
+
+        <div class="skill-item">
+          <span class="skill-label">Web &amp; Mobile Developer</span>
+          <div class="skill-track">
+            <div class="skill-fill" style="--target-width: 92%"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <script>
+    // Trigger bar animations after page load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.querySelectorAll('.skill-fill').forEach((bar, i) => {
+          setTimeout(() => bar.classList.add('animate'), i * 120);
+        });
+      }, 400);
+    });
+  </script>
+
+</body>
+</html>

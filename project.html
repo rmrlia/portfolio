@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Creative Works – Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet" />
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #fff;
+            color: #2c3a50;
+            overflow-x: hidden;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* ── NAV ── */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 22px 64px;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(78, 201, 225, 0.12);
+        }
+
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .06);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 46px;
+            height: 46px;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.1;
+        }
+
+        .logo-text span:first-child {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #1a1a2e;
+        }
+
+        .logo-text span:last-child {
+            font-size: 8px;
+            letter-spacing: 2.5px;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #2d2d2d;
+            font-size: 15px;
+            font-weight: 500;
+            position: relative;
+            padding-bottom: 4px;
+            transition: color 0.2s;
+        }
+
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: #74ccff;
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #74ccff;
+            border-radius: 2px;
+        }
+
+        /* ── PAGE HERO ── */
+        .page-hero {
+            padding: 60px 60px 30px;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            color: #1a2b4a;
+            margin-bottom: 20px;
+            line-height: 1.15;
+        }
+
+        .page-hero p {
+            font-size: 1rem;
+            color: #8fa3b1;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.88;
+        }
+
+        /* ── PORTFOLIO ── */
+        .portfolio-section {
+            padding: 0 0 100px;
+            flex: 1;
+        }
+
+        .portfolio-tabs {
+            display: flex;
+            border-bottom: 1.5px solid #e8e8e8;
+            padding: 0 60px;
+            margin-top: 16px;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .portfolio-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .ptab {
+            padding: 16px 32px;
+            font-size: .93rem;
+            font-weight: 400;
+            color: #aaa;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-family: 'DM Sans', sans-serif;
+            white-space: nowrap;
+            position: relative;
+            border-bottom: 2.5px solid transparent;
+            margin-bottom: -1.5px;
+            transition: color .2s;
+        }
+
+        .ptab:first-child {
+            padding-left: 0;
+        }
+
+        .ptab:hover {
+            color: #1a2b4a;
+        }
+
+        .ptab.active {
+            color: #1a2b4a;
+            font-weight: 700;
+            border-bottom-color: #1a2b4a;
+        }
+
+        .portfolio-panel {
+            display: none;
+            padding: 60px 60px 0;
+        }
+
+        .portfolio-panel.active {
+            display: block;
+            animation: fadeIn .3s ease both;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── CIRCLE GRID ── */
+        .circle-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 28px 24px;
+            justify-items: center;
+        }
+
+        .circle-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+        }
+
+        .circle-ring {
+            padding: 3px;
+            border-radius: 50%;
+            background: #e3eaf2;
+            transition: background .35s ease, transform .3s ease, box-shadow .3s ease;
+            flex-shrink: 0;
+        }
+
+        .circle-item:hover .circle-ring {
+            background: linear-gradient(135deg, #3ab4f2 0%, #7dd6f7 50%, #1a2b4a 100%);
+            transform: scale(1.05);
+            box-shadow: 0 8px 32px rgba(58, 180, 242, .28);
+        }
+
+        .circle-wrap {
+            width: 156px;
+            height: 156px;
+            border-radius: 50%;
+            background: #d9d9d9;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            outline: 3px solid #fff;
+        }
+
+        .circle-wrap::after {
+            content: 'View Sample';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgba(26, 43, 74, .55);
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity .25s;
+            pointer-events: none;
+        }
+
+        .circle-item:hover .circle-wrap::after {
+            opacity: 1;
+        }
+
+        .circle-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .circle-art {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+
+        .circle-art .emoji {
+            font-size: 2.2rem;
+        }
+
+        .circle-art .sublabel {
+            font-size: .55rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+        }
+
+        .circle-label {
+            font-size: .82rem;
+            color: #5a6a7a;
+            text-align: center;
+            line-height: 1.4;
+            font-weight: 500;
+            transition: color .25s;
+        }
+
+        .circle-item:hover .circle-label {
+            color: #3ab4f2;
+        }
+
+        /* ── CARD GRID ── */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 28px 24px;
+            justify-items: center;
+        }
+
+        .card-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .card-wrap {
+            width: 100%;
+            border-radius: 12px;
+            background: #e8edf2;
+            overflow: hidden;
+            position: relative;
+            border: 2px solid #e3eaf2;
+            transition: border-color .35s ease, transform .3s ease, box-shadow .3s ease;
+        }
+
+        .card-wrap img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .card-item:hover .card-wrap {
+            border-color: #3ab4f2;
+            transform: scale(1.03);
+            box-shadow: 0 8px 32px rgba(58, 180, 242, .22);
+        }
+
+        .card-wrap::after {
+            content: 'View Sample';
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 43, 74, .48);
+            color: #fff;
+            font-size: .78rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity .25s;
+            pointer-events: none;
+            border-radius: 10px;
+        }
+
+        .card-item:hover .card-wrap::after {
+            opacity: 1;
+        }
+
+        .card-label {
+            font-size: .82rem;
+            color: #5a6a7a;
+            text-align: center;
+            line-height: 1.4;
+            font-weight: 500;
+            transition: color .25s;
+        }
+
+        .card-item:hover .card-label {
+            color: #3ab4f2;
+        }
+
+        .card-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            background: #e8edf2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* ── PPT CARD ── */
+        .ppt-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ppt-thumb-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
+
+        .ppt-thumb-dots {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+            z-index: 2;
+        }
+
+        .ppt-thumb-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .45);
+            border: 1px solid rgba(255, 255, 255, .3);
+            transition: background .2s, width .25s;
+            flex-shrink: 0;
+        }
+
+        .ppt-thumb-dot.active {
+            background: #3ab4f2;
+            width: 14px;
+            border-radius: 3px;
+        }
+
+        /* ── IMAGE LIGHTBOX ── */
+        .img-lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 1100;
+            background: rgba(0, 0, 0, .88);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .28s ease;
+        }
+
+        .img-lightbox.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .img-lightbox-inner {
+            position: relative;
+            max-width: 92vw;
+            max-height: 92vh;
+            transform: scale(.93) translateY(18px);
+            transition: transform .34s cubic-bezier(.34, 1.4, .64, 1);
+        }
+
+        .img-lightbox.open .img-lightbox-inner {
+            transform: scale(1) translateY(0);
+        }
+
+        .img-lightbox-inner img {
+            max-width: 100%;
+            max-height: 90vh;
+            border-radius: 16px;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, .65);
+            display: block;
+            object-fit: contain;
+        }
+
+        .img-lightbox-inner.natural-mode img {
+            max-width: min(88vw, 820px);
+            max-height: 88vh;
+            width: auto;
+            height: auto;
+            border-radius: 12px;
+            object-fit: contain;
+        }
+
+        .img-lightbox-close {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .28);
+            transition: background .2s, transform .2s;
+            color: #333;
+            z-index: 10;
+            line-height: 1;
+        }
+
+        .img-lightbox-close:hover {
+            background: #f5f5f5;
+            transform: scale(1.12);
+        }
+
+        /* ── SLIDE-STRIP ── */
+        .slidestrip-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1200;
+            background: rgba(0, 0, 0, .92);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .28s ease;
+        }
+
+        .slidestrip-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .slidestrip-box {
+            position: relative;
+            width: 100%;
+            max-width: 960px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            transform: scale(.94) translateY(18px);
+            transition: transform .34s cubic-bezier(.34, 1.4, .64, 1);
+        }
+
+        .slidestrip-overlay.open .slidestrip-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .slidestrip-close {
+            position: absolute;
+            top: -16px;
+            right: -16px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            border: none;
+            background: #fff;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 18px rgba(0, 0, 0, .35);
+            transition: background .2s, transform .2s;
+            color: #333;
+            z-index: 10;
+        }
+
+        .slidestrip-close:hover {
+            background: #f0f0f0;
+            transform: scale(1.1);
+        }
+
+        .slidestrip-main {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border-radius: 14px;
+            overflow: hidden;
+            background: #111;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            touch-action: pan-y;
+            cursor: grab;
+            user-select: none;
+        }
+
+        .slidestrip-main:active {
+            cursor: grabbing;
+        }
+
+        .slidestrip-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+        .ss-swipe-hint {
+            position: absolute;
+            bottom: 44px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: .72rem;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .65);
+            background: rgba(0, 0, 0, .42);
+            padding: 4px 14px;
+            border-radius: 20px;
+            letter-spacing: .08em;
+            font-family: 'DM Sans', sans-serif;
+            pointer-events: none;
+            animation: swipeHintFade 3s ease-in-out 1s forwards;
+        }
+
+        @keyframes swipeHintFade {
+            0% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+            }
+        }
+
+        .ss-paused-badge {
+            position: absolute;
+            top: 12px;
+            left: 14px;
+            font-size: .7rem;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .7);
+            background: rgba(0, 0, 0, .5);
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-family: 'DM Sans', sans-serif;
+            pointer-events: none;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .ss-slide-enter-right {
+            animation: slideInRight .42s cubic-bezier(.25, .8, .25, 1) forwards;
+        }
+
+        .ss-slide-enter-left {
+            animation: slideInLeft .42s cubic-bezier(.25, .8, .25, 1) forwards;
+        }
+
+        .slidestrip-counter {
+            position: absolute;
+            bottom: 12px;
+            right: 14px;
+            font-size: .75rem;
+            color: rgba(255, 255, 255, .6);
+            background: rgba(0, 0, 0, .45);
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .slidestrip-thumbs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 2px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(255, 255, 255, .2) transparent;
+        }
+
+        .slidestrip-thumbs::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .slidestrip-thumbs::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, .25);
+            border-radius: 4px;
+        }
+
+        .ss-thumb {
+            flex-shrink: 0;
+            width: 120px;
+            aspect-ratio: 16/9;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2.5px solid transparent;
+            transition: border-color .2s, transform .18s, opacity .18s;
+            background: #222;
+            opacity: .5;
+        }
+
+        .ss-thumb:hover {
+            opacity: .85;
+            transform: translateY(-2px);
+        }
+
+        .ss-thumb.active {
+            border-color: #3ab4f2;
+            opacity: 1;
+        }
+
+        .ss-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .ss-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, .12);
+            border: 1.5px solid rgba(255, 255, 255, .18);
+            color: #fff;
+            font-size: 2rem;
+            line-height: 1;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background .2s, transform .2s, opacity .2s;
+            z-index: 5;
+            backdrop-filter: blur(6px);
+            padding: 0;
+            opacity: .75;
+        }
+
+        .ss-arrow:hover {
+            background: rgba(58, 180, 242, .35);
+            border-color: #3ab4f2;
+            opacity: 1;
+            transform: translateY(-50%) scale(1.08);
+        }
+
+        .ss-arrow-prev {
+            left: 12px;
+        }
+
+        .ss-arrow-next {
+            right: 12px;
+        }
+
+        .ss-dots {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 4px 0 2px;
+        }
+
+        .ss-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, .28);
+            border: 1.5px solid rgba(255, 255, 255, .22);
+            cursor: pointer;
+            transition: background .2s, transform .2s, width .25s;
+            flex-shrink: 0;
+        }
+
+        .ss-dot:hover {
+            background: rgba(58, 180, 242, .55);
+            border-color: #3ab4f2;
+        }
+
+        .ss-dot.active {
+            background: #3ab4f2;
+            border-color: #3ab4f2;
+            width: 22px;
+            border-radius: 4px;
+        }
+
+        /* ── TOOLS GRID ── */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            padding: 8px 0 0;
+        }
+
+        .tool-card {
+            background: #fff;
+            border: 1px solid #edf2f8;
+            border-radius: 18px;
+            padding: 22px 12px 18px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 3px 16px rgba(26, 43, 74, .06);
+            transition: transform .22s ease, box-shadow .22s ease;
+            cursor: default;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 36px rgba(58, 180, 242, .13);
+        }
+
+        .tool-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+        }
+
+        .tool-name {
+            font-size: .72rem;
+            font-weight: 700;
+            color: #1a2b4a;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .tool-type {
+            font-size: .62rem;
+            color: #8fa3b1;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* ── VIEW WEBSITE BUTTON ── */
+        .view-website-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 22px;
+            border-radius: 8px;
+            background: #1a2b4a;
+            color: #fff;
+            font-size: .84rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: .04em;
+            margin-top: 4px;
+            transition: background .2s, transform .2s, box-shadow .2s;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .view-website-btn:hover {
+            background: #3ab4f2;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(58, 180, 242, .35);
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: #1a2b4a;
+            color: rgba(255, 255, 255, .42);
+            text-align: center;
+            padding: 26px 60px;
+            font-size: .8rem;
+            letter-spacing: .04em;
+        }
+
+        footer span {
+            color: #3ab4f2;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            nav {
+                padding: 18px 28px;
+            }
+
+            .page-hero {
+                padding: 40px 24px 48px;
+            }
+
+            .portfolio-tabs {
+                padding: 0 24px;
+            }
+
+            .portfolio-panel {
+                padding: 44px 24px 0;
+            }
+
+            .circle-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 22px;
+                justify-items: center;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ptab {
+                padding: 13px 16px;
+                font-size: .82rem;
+            }
+
+            .circle-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+                justify-items: center;
+            }
+
+            .circle-wrap {
+                width: 130px;
+                height: 130px;
+            }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tools-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .tool-card {
+                padding: 18px 10px 14px;
+            }
+
+            .tool-icon {
+                width: 44px;
+                height: 44px;
+                font-size: 1.35rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── NAVBAR ── -->
+    <nav id="navbar">
+        <a href="#" class="logo">
+            <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85" />
+                <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7" />
+                <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7" />
+                <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85" />
+            </svg>
+            <div class="logo-text">
+                <span>PIXORA</span>
+                <span>Design · Code · Create</span>
+            </div>
+        </a>
+        <ul class="nav-links">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About Me</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="project.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- ── PAGE HERO ── -->
+    <div class="page-hero">
+        <h1>Simple Creative Works</h1>
+        <p>
+            We create clean and modern digital designs that help turn ideas into simple, functional,
+            and visually appealing results. From design to development, we focus on clarity, creativity,
+            and user-friendly output.
+        </p>
+    </div>
+
+    <!-- ── PORTFOLIO ── -->
+    <section class="portfolio-section">
+
+        <!-- TABS -->
+        <div class="portfolio-tabs" id="tabs">
+            <button class="ptab active" data-tab="logos">Logos</button>
+            <button class="ptab" data-tab="poster">Poster</button>
+            <button class="ptab" data-tab="menu">Simple Menu Design</button>
+            <button class="ptab" data-tab="ppt">Powerpoint</button>
+            <button class="ptab" data-tab="social">Social Media Post</button>
+            <button class="ptab" data-tab="promo">Promo</button>
+            <button class="ptab" data-tab="system">System</button>
+            <button class="ptab" data-tab="website">Website</button>
+        </div>
+
+        <!-- LOGOS PANEL -->
+        <div class="portfolio-panel active" id="panel-logos">
+            <div class="circle-grid">
+                <div class="circle-item" onclick="openLightbox('DONUT.png', false)">
+                    <div class="circle-ring">
+                        <div class="circle-wrap">
+                            <img src="DONUT.png" alt="Donut Shop Logo"
+                                onerror="this.style.display='none'; this.parentElement.innerHTML+='<div class=\'circle-art\' style=\'background:linear-gradient(135deg,#fff5f0,#ffe4d6)\'><div class=\'emoji\'>🍩</div><div class=\'sublabel\'>DONUT SHOP</div></div>';" />
+                        </div>
+                    </div>
+                    <span class="circle-label">Donut Shop Logo</span>
+                </div>
+                <div class="circle-item" onclick="openLightbox('TEA.png', false)">
+                    <div class="circle-ring">
+                        <div class="circle-wrap">
+                            <img src="TEA.png" alt="Milk Tea Shop Logo"
+                                onerror="this.style.display='none'; this.parentElement.innerHTML+='<div class=\'circle-art\' style=\'background:linear-gradient(135deg,#f0f9f4,#d4edda)\'><div class=\'emoji\'>🧋</div><div class=\'sublabel\'>MILK TEA</div></div>';" />
+                        </div>
+                    </div>
+                    <span class="circle-label">Milk Tea Shop Logo</span>
+                </div>
+                <div class="circle-item" onclick="openLightbox('WATER.png', false)">
+                    <div class="circle-ring">
+                        <div class="circle-wrap">
+                            <img src="WATER.png" alt="Water Station Logo"
+                                onerror="this.style.display='none'; this.parentElement.innerHTML+='<div class=\'circle-art\' style=\'background:linear-gradient(135deg,#e8f4fd,#cce5ff)\'><div class=\'emoji\'>💧</div><div class=\'sublabel\'>WATER STATION</div></div>';" />
+                        </div>
+                    </div>
+                    <span class="circle-label">Water Station Logo</span>
+                </div>
+                <div class="circle-item" onclick="openLightbox('logo_1.jpg', false)">
+                    <div class="circle-ring">
+                        <div class="circle-wrap">
+                            <img src="logo_1.jpg" alt="Logo 1"
+                                onerror="this.style.display='none'; this.parentElement.innerHTML+='<div class=\'circle-art\' style=\'background:linear-gradient(135deg,#f5f0ff,#e0d4f7)\'><div class=\'emoji\'>✨</div><div class=\'sublabel\'>LOGO</div></div>';" />
+                        </div>
+                    </div>
+                    <span class="circle-label">Logo Design</span>
+                </div>
+                <div class="circle-item" onclick="openLightbox('logo_2.jpg', false)">
+                    <div class="circle-ring">
+                        <div class="circle-wrap">
+                            <img src="logo_2.jpg" alt="Logo 2"
+                                onerror="this.style.display='none'; this.parentElement.innerHTML+='<div class=\'circle-art\' style=\'background:linear-gradient(135deg,#fff0f5,#f7d4e0)\'><div class=\'emoji\'>✨</div><div class=\'sublabel\'>LOGO</div></div>';" />
+                        </div>
+                    </div>
+                    <span class="circle-label">Logo Design</span>
+                </div>
+                <div class="circle-item" onclick="openLightbox('logo_3.jpg', false)">
+                    <div class="circle-ring">
+                        <div class="circle-wrap">
+                            <img src="logo_3.jpg" alt="Logo 3"
+                                onerror="this.style.display='none'; this.parentElement.innerHTML+='<div class=\'circle-art\' style=\'background:linear-gradient(135deg,#f0fff5,#d4f7e0)\'><div class=\'emoji\'>✨</div><div class=\'sublabel\'>LOGO</div></div>';" />
+                        </div>
+                    </div>
+                    <span class="circle-label">Logo Design</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- POSTER PANEL -->
+        <div class="portfolio-panel" id="panel-poster">
+            <div class="card-grid">
+                <div class="card-item" onclick="openLightbox('Poster1.png', true)">
+                    <div class="card-wrap">
+                        <img src="Poster1.png" alt="Travel App Poster"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Travel App Poster</span>
+                </div>
+                <div class="card-item" onclick="openLightbox('Poster2.png', true)">
+                    <div class="card-wrap">
+                        <img src="Poster2.png" alt="Cybersecurity Poster"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Cybersecurity Poster</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENU PANEL -->
+        <div class="portfolio-panel" id="panel-menu">
+            <div class="card-grid">
+                <div class="card-item" onclick="openLightbox('Menu.png', true)">
+                    <div class="card-wrap">
+                        <img src="Menu.png" alt="Coffee Menu"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Coffee Menu</span>
+                </div>
+                <div class="card-item" onclick="openLightbox('Menu2.png', true)">
+                    <div class="card-wrap">
+                        <img src="Menu2.png" alt="Food Menu"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Food Menu</span>
+                </div>
+                <div class="card-item" onclick="openLightbox('Menu3.png', true)">
+                    <div class="card-wrap">
+                        <img src="Menu3.png" alt="Ice Cream Menu"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Ice Cream Menu</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PPT PANEL -->
+        <div class="portfolio-panel" id="panel-ppt">
+            <div class="card-grid">
+                <!-- PPT Card 1 -->
+                <div class="card-item ppt-card-item"
+                    data-slides='["ppt1_1.png","ppt1_2.png","ppt1_3.png","ppt1_4.png","ppt1_5.png"]'>
+                    <div class="card-wrap ppt-card">
+                        <img class="ppt-thumb-img" src="ppt1_1.png" alt="PowerPoint slide"
+                            style="opacity:1;transition:opacity .4s ease;" />
+                        <div class="ppt-thumb-dots"></div>
+                    </div>
+                    <span class="card-label">PowerPoint Presentation</span>
+                </div>
+                <!-- PPT Card 2 -->
+                <div class="card-item ppt-card-item"
+                    data-slides='["ppt2_1.png","ppt2_2.png","ppt2_3.png","ppt2_4.png","ppt2_5.png"]'>
+                    <div class="card-wrap ppt-card">
+                        <img class="ppt-thumb-img" src="ppt2_1.png" alt="PowerPoint slide"
+                            style="opacity:1;transition:opacity .4s ease;" />
+                        <div class="ppt-thumb-dots"></div>
+                    </div>
+                    <span class="card-label">PowerPoint Presentation 2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SOCIAL PANEL -->
+        <div class="portfolio-panel" id="panel-social">
+            <div class="card-grid">
+                <div class="card-item" onclick="openLightbox('social1.png', true)">
+                    <div class="card-wrap">
+                        <img src="social1.png" alt="Social Media Post"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Social Media Post</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PROMO PANEL -->
+        <div class="portfolio-panel" id="panel-promo">
+            <div class="card-grid">
+                <div class="card-item" onclick="openLightbox('Promo1.png', true)">
+                    <div class="card-wrap">
+                        <img src="Promo1.png" alt="Samgyupsal Promo"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Samgyupsal Promo</span>
+                </div>
+                <div class="card-item" onclick="openLightbox('Promo2.png', true)">
+                    <div class="card-wrap">
+                        <img src="Promo2.png" alt="Coffee Shop Promo"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Coffee Shop Promo</span>
+                </div>
+                <div class="card-item" onclick="openLightbox('Promo3.png', true)">
+                    <div class="card-wrap">
+                        <img src="Promo3.png" alt="Chicken Inasal Promo"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🖼️</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>Coming Soon</div></div>';" />
+                    </div>
+                    <span class="card-label">Chicken Inasal Promo</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SYSTEM PANEL -->
+        <div class="portfolio-panel" id="panel-system">
+            <div class="card-grid">
+                <div class="card-item ppt-card-item"
+                    data-slides='["system_1.png","system_2.png","system_3.png","system_4.png","system_5.png","system_6.png"]'>
+                    <div class="card-wrap ppt-card">
+                        <img class="ppt-thumb-img" src="system_1.png" alt="System slide"
+                            style="opacity:1;transition:opacity .4s ease;" />
+                        <div class="ppt-thumb-dots"></div>
+                    </div>
+                    <span class="card-label">System Design</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEBSITE PANEL -->
+        <div class="portfolio-panel" id="panel-website">
+            <div class="card-grid">
+                <div class="card-item" style="cursor:default;">
+                    <div class="card-wrap"
+                        onclick="openSlidestrip(['web_1.png','web_2.png','web_3.png','web_4.png','web_5.png','web_6.png','web_7.png'])"
+                        style="cursor:pointer;">
+                        <img src="web_1.png" alt="iLovah Cleaning Services Website"
+                            style="width:100%;height:auto;display:block;object-fit:contain;"
+                            onerror="this.style.display='none'; this.parentElement.innerHTML='<div class=\'card-placeholder\'><div style=\'font-size:1.6rem\'>🌐</div><div style=\'font-size:.62rem;color:#8fa3b1;font-weight:600;letter-spacing:.06em\'>iLovah Cleaning Services</div></div>';" />
+                    </div>
+                    <span class="card-label">iLovah Cleaning Services</span>
+                    <a href="https://www.ilovahcleaningservices.com.au" target="_blank" rel="noopener noreferrer"
+                        class="view-website-btn">
+                        🌐 View Website
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        © 2024 <span>SimpleCreative</span>. All rights reserved.
+    </footer>
+
+    <!-- ── IMAGE LIGHTBOX ── -->
+    <div class="img-lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+        <div class="img-lightbox-inner" id="lightbox-inner">
+            <button class="img-lightbox-close" onclick="closeLightbox()">✕</button>
+            <img id="lightbox-img" src="" alt="Full Preview" onerror="showLightboxFailed()" />
+        </div>
+    </div>
+
+    <!-- ── SLIDE-STRIP ── -->
+    <div class="slidestrip-overlay" id="slidestrip" onclick="if(event.target===this)closeSlidestrip()">
+        <div class="slidestrip-box">
+            <button class="slidestrip-close" onclick="closeSlidestrip()">✕</button>
+            <div class="slidestrip-main" id="ss-main">
+                <img id="ss-img" src="" alt="Slide"
+                    style="width:100%;height:100%;object-fit:contain;display:block;user-select:none;-webkit-user-drag:none;pointer-events:none;" />
+                <span class="slidestrip-counter" id="ss-counter">1 / 1</span>
+                <span class="ss-swipe-hint" id="ss-swipe-hint">‹ swipe ›</span>
+                <span class="ss-paused-badge" id="ss-paused" style="display:none;">⏸ Paused</span>
+                <button class="ss-arrow ss-arrow-prev" onclick="ssManual(() => ssNavigate(-1))">&#8249;</button>
+                <button class="ss-arrow ss-arrow-next" onclick="ssManual(() => ssNavigate(1))">&#8250;</button>
+            </div>
+            <div class="ss-dots" id="ss-dots"></div>
+            <div class="slidestrip-thumbs" id="ss-thumbs"></div>
+        </div>
+    </div>
+
+    <script>
+        // ── NAV scroll shadow ──────────────────────────────────────────────────────
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+        // ── TABS ──────────────────────────────────────────────────────────────────
+        document.querySelectorAll('.ptab').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.ptab').forEach(b => b.classList.remove('active'));
+                document.querySelectorAll('.portfolio-panel').forEach(p => p.classList.remove('active'));
+                btn.classList.add('active');
+                document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+            });
+        });
+
+        // ── PPT THUMBNAIL CAROUSEL ─────────────────────────────────────────────────
+        document.querySelectorAll('.ppt-card-item').forEach(card => {
+            const slides = JSON.parse(card.dataset.slides);
+            const img = card.querySelector('.ppt-thumb-img');
+            const dotsEl = card.querySelector('.ppt-thumb-dots');
+            let idx = 0;
+
+            // Build dots
+            slides.forEach((_, i) => {
+                const dot = document.createElement('span');
+                dot.className = 'ppt-thumb-dot' + (i === 0 ? ' active' : '');
+                dotsEl.appendChild(dot);
+            });
+
+            const updateDots = () => {
+                dotsEl.querySelectorAll('.ppt-thumb-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === idx);
+                });
+            };
+
+            setInterval(() => {
+                img.style.opacity = '0';
+                setTimeout(() => {
+                    idx = (idx + 1) % slides.length;
+                    img.src = slides[idx];
+                    img.style.opacity = '1';
+                    updateDots();
+                }, 400);
+            }, 2000);
+
+            card.addEventListener('click', () => openSlidestrip(slides));
+        });
+
+        // ── IMAGE LIGHTBOX ─────────────────────────────────────────────────────────
+        function openLightbox(src, naturalMode) {
+            const lb = document.getElementById('lightbox');
+            const inner = document.getElementById('lightbox-inner');
+            const img = document.getElementById('lightbox-img');
+            img.style.display = 'block';
+            img.src = src;
+            inner.className = 'img-lightbox-inner' + (naturalMode ? ' natural-mode' : '');
+            lb.classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+        function showLightboxFailed() {
+            const img = document.getElementById('lightbox-img');
+            img.style.display = 'none';
+            const inner = document.getElementById('lightbox-inner');
+            if (!inner.querySelector('.lb-failed')) {
+                const d = document.createElement('div');
+                d.className = 'lb-failed';
+                d.style.cssText = 'width:400px;max-width:90vw;background:#1a2b4a;border-radius:16px;padding:60px 40px;text-align:center;color:#fff;';
+                d.innerHTML = '<div style="font-size:3rem;margin-bottom:16px">🖼</div><div style="font-family:\'Playfair Display\',serif;font-size:1.3rem;font-weight:900;margin-bottom:8px">Coming Soon</div><div style="font-size:.85rem;color:rgba(255,255,255,.5)">Image will be added soon</div>';
+                inner.appendChild(d);
+            }
+        }
+
+        // ── SLIDE-STRIP ────────────────────────────────────────────────────────────
+        let ssSlides = [], ssIdx = 0, ssAnimating = false, ssAuto = null, ssPaused = false;
+        let ssTouchStartX = null, ssTouchStartY = null;
+        let ssMouseStartX = null, ssDragging = false;
+
+        function openSlidestrip(slides) {
+            ssSlides = slides;
+            ssIdx = 0;
+            ssPaused = false;
+            buildSsUi();
+            document.getElementById('slidestrip').classList.add('open');
+            document.body.style.overflow = 'hidden';
+            ssStartAuto();
+            // reset swipe hint
+            const hint = document.getElementById('ss-swipe-hint');
+            hint.style.animation = 'none';
+            void hint.offsetWidth;
+            hint.style.animation = '';
+        }
+
+        function closeSlidestrip() {
+            document.getElementById('slidestrip').classList.remove('open');
+            document.body.style.overflow = '';
+            clearInterval(ssAuto);
+        }
+
+        function buildSsUi() {
+            const img = document.getElementById('ss-img');
+            img.src = ssSlides[ssIdx];
+            img.className = '';
+            updateSsCounter();
+
+            // dots
+            const dotsEl = document.getElementById('ss-dots');
+            dotsEl.innerHTML = '';
+            ssSlides.forEach((_, i) => {
+                const d = document.createElement('span');
+                d.className = 'ss-dot' + (i === ssIdx ? ' active' : '');
+                d.addEventListener('click', () => ssManual(() => ssGoTo(i)));
+                dotsEl.appendChild(d);
+            });
+
+            // thumbs
+            const thumbsEl = document.getElementById('ss-thumbs');
+            thumbsEl.innerHTML = '';
+            ssSlides.forEach((src, i) => {
+                const div = document.createElement('div');
+                div.className = 'ss-thumb' + (i === ssIdx ? ' active' : '');
+                div.addEventListener('click', () => ssManual(() => ssGoTo(i)));
+                const tImg = document.createElement('img');
+                tImg.src = src;
+                tImg.alt = 'Slide ' + (i + 1);
+                div.appendChild(tImg);
+                thumbsEl.appendChild(div);
+            });
+        }
+
+        function updateSsCounter() {
+            document.getElementById('ss-counter').textContent = (ssIdx + 1) + ' / ' + ssSlides.length;
+        }
+
+        function updateSsActive() {
+            document.querySelectorAll('.ss-dot').forEach((d, i) => d.classList.toggle('active', i === ssIdx));
+            document.querySelectorAll('.ss-thumb').forEach((t, i) => {
+                t.classList.toggle('active', i === ssIdx);
+                if (i === ssIdx) t.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+            });
+            updateSsCounter();
+        }
+
+        function ssNavigate(dir) {
+            if (ssAnimating) return;
+            ssAnimating = true;
+            const next = ((ssIdx + dir) + ssSlides.length) % ssSlides.length;
+            const img = document.getElementById('ss-img');
+            img.className = dir >= 0 ? 'ss-slide-enter-right' : 'ss-slide-enter-left';
+            ssIdx = next;
+            img.src = ssSlides[ssIdx];
+            updateSsActive();
+            setTimeout(() => { ssAnimating = false; }, 440);
+        }
+
+        function ssGoTo(n) {
+            if (ssAnimating) return;
+            const next = ((n % ssSlides.length) + ssSlides.length) % ssSlides.length;
+            const dir = next > ssIdx ? 1 : -1;
+            ssAnimating = true;
+            const img = document.getElementById('ss-img');
+            img.className = dir >= 0 ? 'ss-slide-enter-right' : 'ss-slide-enter-left';
+            ssIdx = next;
+            img.src = ssSlides[ssIdx];
+            updateSsActive();
+            setTimeout(() => { ssAnimating = false; }, 440);
+        }
+
+        function ssStartAuto() {
+            clearInterval(ssAuto);
+            ssAuto = setInterval(() => { if (!ssAnimating) ssNavigate(1); }, 3000);
+        }
+
+        function ssManual(action) {
+            ssPaused = true;
+            document.getElementById('ss-paused').style.display = 'block';
+            action();
+            clearInterval(ssAuto);
+            setTimeout(() => {
+                ssPaused = false;
+                document.getElementById('ss-paused').style.display = 'none';
+                ssStartAuto();
+            }, 6000);
+        }
+
+        // keyboard
+        document.addEventListener('keydown', (e) => {
+            const ss = document.getElementById('slidestrip');
+            const lb = document.getElementById('lightbox');
+            if (ss.classList.contains('open')) {
+                if (e.key === 'Escape') closeSlidestrip();
+                if (e.key === 'ArrowLeft') ssManual(() => ssNavigate(-1));
+                if (e.key === 'ArrowRight') ssManual(() => ssNavigate(1));
+            } else if (lb.classList.contains('open')) {
+                if (e.key === 'Escape') closeLightbox();
+            }
+        });
+
+        // touch swipe on slidestrip
+        const ssMain = document.getElementById('ss-main');
+        ssMain.addEventListener('touchstart', e => {
+            ssTouchStartX = e.touches[0].clientX;
+            ssTouchStartY = e.touches[0].clientY;
+        });
+        ssMain.addEventListener('touchend', e => {
+            if (ssTouchStartX === null) return;
+            const dx = e.changedTouches[0].clientX - ssTouchStartX;
+            const dy = e.changedTouches[0].clientY - ssTouchStartY;
+            ssTouchStartX = null; ssTouchStartY = null;
+            if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
+            ssManual(() => ssNavigate(dx < 0 ? 1 : -1));
+        });
+
+        // mouse drag on slidestrip
+        ssMain.addEventListener('mousedown', e => { ssMouseStartX = e.clientX; ssDragging = true; });
+        ssMain.addEventListener('mousemove', e => { if (ssDragging) e.preventDefault(); });
+        ssMain.addEventListener('mouseup', e => {
+            if (!ssDragging) return;
+            ssDragging = false;
+            const dx = e.clientX - ssMouseStartX;
+            if (Math.abs(dx) < 50) return;
+            ssManual(() => ssNavigate(dx < 0 ? 1 : -1));
+        });
+        ssMain.addEventListener('mouseleave', () => { ssDragging = false; });
+    </script>
+</body>
+
+</html>

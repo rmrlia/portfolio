@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact – Abegail E. Ramiro</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
+    rel="stylesheet" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --sky: #4EC9E1;
+      --sky-light: #A8E6F0;
+      --sky-dark: #1AACCC;
+      --dark: #1a1a2e;
+      --text: #2d2d2d;
+      --muted: #6b7280;
+      --bg: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 64px;
+      position: sticky;
+      top: 0;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(78, 201, 225, 0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 46px;
+      height: 46px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 8px;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: var(--sky-dark);
+    }
+
+    .nav-links a.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--sky-dark);
+      border-radius: 2px;
+    }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 80px 64px;
+    }
+
+    .contact-wrapper {
+      text-align: center;
+      max-width: 760px;
+      width: 100%;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.1s forwards;
+    }
+
+    .contact-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 700;
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .contact-subtitle {
+      font-size: 17px;
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 580px;
+      margin: 0 auto 52px;
+    }
+
+    /* ── EMAIL ROW ── */
+    .email-row {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .email-input {
+      flex: 1;
+      height: 62px;
+      padding: 0 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      background: #f4f6f8;
+      border: 1.5px solid #e5e7eb;
+      border-right: none;
+      border-radius: 12px 0 0 12px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .email-input::placeholder {
+      color: #b0b8c5;
+    }
+
+    .email-input:focus {
+      border-color: var(--sky);
+      box-shadow: 0 0 0 3px rgba(78, 201, 225, 0.15);
+    }
+
+    .btn-contact {
+      height: 62px;
+      padding: 0 36px;
+      background: var(--sky);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 0 12px 12px 0;
+      cursor: pointer;
+      letter-spacing: 0.4px;
+      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+      box-shadow: 0 4px 20px rgba(78, 201, 225, 0.35);
+      white-space: nowrap;
+    }
+
+    .btn-contact:hover {
+      background: var(--sky-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(78, 201, 225, 0.45);
+    }
+
+    /* Success message */
+    .success-msg {
+      display: none;
+      margin-top: 18px;
+      font-size: 15px;
+      color: var(--sky-dark);
+      font-weight: 500;
+      animation: fadeUp 0.4s ease forwards;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #4a4f56;
+      padding: 26px 64px;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-size: 15px;
+      color: #cdd1d6;
+      letter-spacing: 0.2px;
+    }
+
+    .footer-text a {
+      color: var(--sky);
+      text-decoration: none;
+      font-weight: 700;
+      transition: color 0.2s;
+    }
+
+    .footer-text a:hover {
+      color: var(--sky-light);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav {
+        padding: 18px 28px;
+      }
+
+      main {
+        padding: 60px 28px;
+      }
+
+      .email-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .email-input {
+        border-right: 1.5px solid #e5e7eb;
+        border-radius: 12px;
+        width: 100%;
+      }
+
+      .btn-contact {
+        border-radius: 12px;
+        width: 100%;
+      }
+
+      footer {
+        padding: 22px 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85" />
+        <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7" />
+        <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7" />
+        <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85" />
+      </svg>
+      <div class="logo-text">
+        <span>PIXORA</span>
+        <span>Design · Code · Create</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="home.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main>
+    <div class="contact-wrapper">
+      <h1 class="contact-title">Let's Design Together</h1>
+      <p class="contact-subtitle">
+        Have a project in mind or need help bringing your ideas to life? I’d love to hear from you. Whether it’s design,
+        development, or creative support, feel free to reach out and let’s discuss how I can help you achieve your
+        goals.
+      </p>
+
+      <div class="email-row">
+        <input type="email" class="email-input" id="emailInput" placeholder="Enter Your Email" />
+        <button class="btn-contact" onclick="handleContact()">Contact Me</button>
+      </div>
+      <p class="success-msg" id="successMsg">✓ Thanks! I'll be in touch soon.</p>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <p class="footer-text">
+      &copy; 2026 <a href="index.html">Abegail</a> All Rights Reserved , Inc.
+    </p>
+  </footer>
+
+  <script>
+    function handleContact() {
+      const input = document.getElementById('emailInput');
+      const msg = document.getElementById('successMsg');
+      const email = input.value.trim();
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        input.style.borderColor = '#f87171';
+        input.focus();
+        setTimeout(() => input.style.borderColor = '', 1500);
+        return;
+      }
+
+      msg.style.display = 'block';
+      input.value = '';
+      input.style.borderColor = '#4EC9E1';
+      setTimeout(() => {
+        msg.style.display = 'none';
+        input.style.borderColor = '';
+      }, 4000);
+    }
+
+    // Allow Enter key
+    document.getElementById('emailInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') handleContact();
+    });
+  </script>
+
+</body>
+
+</html>
