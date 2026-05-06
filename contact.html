@@ -1,21 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact – Abegail E. Ramiro</title>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap"
-    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --sky: #4EC9E1;
@@ -27,9 +18,7 @@
       --bg: #ffffff;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -49,10 +38,10 @@
       padding: 22px 64px;
       position: sticky;
       top: 0;
-      background: rgba(255, 255, 255, 0.92);
+      background: rgba(255,255,255,0.92);
       backdrop-filter: blur(10px);
       z-index: 100;
-      border-bottom: 1px solid rgba(78, 201, 225, 0.12);
+      border-bottom: 1px solid rgba(78,201,225,0.12);
     }
 
     .logo {
@@ -62,10 +51,7 @@
       text-decoration: none;
     }
 
-    .logo-icon {
-      width: 46px;
-      height: 46px;
-    }
+    .logo-icon { width: 46px; height: 46px; }
 
     .logo-text {
       display: flex;
@@ -105,16 +91,12 @@
     }
 
     .nav-links a.active,
-    .nav-links a:hover {
-      color: var(--sky-dark);
-    }
+    .nav-links a:hover { color: var(--sky-dark); }
 
     .nav-links a.active::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 2px;
       background: var(--sky-dark);
       border-radius: 2px;
@@ -126,98 +108,90 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 80px 64px;
+      padding: 80px 64px 60px;
     }
 
     .contact-wrapper {
-      text-align: center;
-      max-width: 760px;
       width: 100%;
+      max-width: 800px;
+      text-align: center;
       opacity: 0;
       animation: fadeUp 0.8s ease 0.1s forwards;
     }
 
+    /* ── TITLE ── */
     .contact-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 6vw, 72px);
+      font-size: clamp(36px, 5.5vw, 68px);
       font-weight: 700;
       color: var(--dark);
       line-height: 1.1;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
 
     .contact-subtitle {
       font-size: 17px;
-      line-height: 1.75;
+      line-height: 1.8;
       color: var(--muted);
-      max-width: 580px;
-      margin: 0 auto 52px;
+      max-width: 640px;
+      margin: 0 auto 60px;
     }
 
-    /* ── EMAIL ROW ── */
-    .email-row {
+    /* ── CONTACT ICONS ── */
+    .contact-icons {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+      max-width: 320px;
+      margin: 0 auto;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.35s forwards;
+    }
+
+    .contact-item {
       display: flex;
       align-items: center;
-      gap: 0;
-      max-width: 760px;
-      margin: 0 auto;
-    }
-
-    .email-input {
-      flex: 1;
-      height: 62px;
-      padding: 0 24px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
+      gap: 16px;
+      text-decoration: none;
       color: var(--text);
-      background: #f4f6f8;
-      border: 1.5px solid #e5e7eb;
-      border-right: none;
-      border-radius: 12px 0 0 12px;
-      outline: none;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition: transform 0.2s;
     }
 
-    .email-input::placeholder {
-      color: #b0b8c5;
+    .contact-item:hover { transform: translateX(5px); }
+
+    .icon-bubble {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--sky-light), var(--sky));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 4px 14px rgba(78,201,225,0.35);
     }
 
-    .email-input:focus {
-      border-color: var(--sky);
-      box-shadow: 0 0 0 3px rgba(78, 201, 225, 0.15);
+    .icon-bubble svg {
+      width: 22px;
+      height: 22px;
+      fill: #fff;
     }
 
-    .btn-contact {
-      height: 62px;
-      padding: 0 36px;
-      background: var(--sky);
-      color: #fff;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
+    .contact-detail { display: flex; flex-direction: column; gap: 2px; text-align: left; }
+
+    .contact-detail-label {
+      font-size: 11px;
       font-weight: 700;
-      border: none;
-      border-radius: 0 12px 12px 0;
-      cursor: pointer;
-      letter-spacing: 0.4px;
-      transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
-      box-shadow: 0 4px 20px rgba(78, 201, 225, 0.35);
-      white-space: nowrap;
-    }
-
-    .btn-contact:hover {
-      background: var(--sky-dark);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(78, 201, 225, 0.45);
-    }
-
-    /* Success message */
-    .success-msg {
-      display: none;
-      margin-top: 18px;
-      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
       color: var(--sky-dark);
-      font-weight: 500;
-      animation: fadeUp 0.4s ease forwards;
+    }
+
+    .contact-detail-value {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--dark);
     }
 
     /* ── FOOTER ── */
@@ -240,66 +214,65 @@
       transition: color 0.2s;
     }
 
-    .footer-text a:hover {
-      color: var(--sky-light);
-    }
+    .footer-text a:hover { color: var(--sky-light); }
 
     /* ── ANIMATIONS ── */
     @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(22px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
-      nav {
-        padding: 18px 28px;
-      }
+      nav { padding: 18px 24px; }
+      main { padding: 60px 28px; }
+      footer { padding: 22px 24px; }
+    }
+    
+    /* Social icons */
+    .social-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+      margin-top: 30px;
+    }
 
-      main {
-        padding: 60px 28px;
-      }
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      color: #353546;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s, transform 0.2s;
+    }
 
-      .email-row {
-        flex-direction: column;
-        gap: 12px;
-      }
+    .social-links a:hover {
+      background: #74ccff;
+      color: #fff;
+      transform: translateY(-3px);
+    }
 
-      .email-input {
-        border-right: 1.5px solid #e5e7eb;
-        border-radius: 12px;
-        width: 100%;
-      }
-
-      .btn-contact {
-        border-radius: 12px;
-        width: 100%;
-      }
-
-      footer {
-        padding: 22px 28px;
-      }
+    .social-links svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
     }
   </style>
 </head>
-
 <body>
 
   <!-- NAV -->
   <nav>
     <a href="index.html" class="logo">
       <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85" />
-        <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7" />
-        <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7" />
-        <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85" />
+        <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85"/>
+        <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85"/>
       </svg>
       <div class="logo-text">
         <span>PIXORA</span>
@@ -311,7 +284,7 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Me</a></li>
       <li><a href="services.html">Services</a></li>
-      <li><a href="project.html">Projects</a></li>
+      <li><a href="projects.html">Projects</a></li>
       <li><a href="contact.html" class="active">Contact</a></li>
     </ul>
   </nav>
@@ -319,19 +292,68 @@
   <!-- MAIN -->
   <main>
     <div class="contact-wrapper">
+
       <h1 class="contact-title">Let's Design Together</h1>
       <p class="contact-subtitle">
-        Have a project in mind or need help bringing your ideas to life? I’d love to hear from you. Whether it’s design,
-        development, or creative support, feel free to reach out and let’s discuss how I can help you achieve your
-        goals.
+        Have a project in mind or need help bringing your ideas to life? I'd love to hear from
+        you. Whether it's design, development, or creative support, feel free to reach out
+        and let's discuss how I can help you achieve your goals.
       </p>
 
-      <div class="email-row">
-        <input type="email" class="email-input" id="emailInput" placeholder="Enter Your Email" />
-        <button class="btn-contact" onclick="handleContact()">Contact Me</button>
+      <div class="contact-icons">
+
+        <!-- Phone -->
+        <a class="contact-item" href="tel:+63 976 629 4511">
+          <div class="icon-bubble">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-label">Phone</span>
+            <span class="contact-detail-value">+63 976 629 4511</span>
+          </div>
+        </a>
+
+        <!-- Email -->
+        <a class="contact-item" href="mailto:ramiro.abegail.101@gmail.com">
+          <div class="icon-bubble">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </div>
+          <div class="contact-detail">
+            <span class="contact-detail-label">Email</span>
+            <span class="contact-detail-value">ramiro.abegail.101@gmail.com</span>
+          </div>
+        </a>
+        <!-- Social Icons -->
+      <div class="social-links">
+        <!-- Facebook -->
+        <a href="https://www.facebook.com/share/172Eoh1SG1/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987H7.898V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/>
+          </svg>
+        </a>
+
+        <!-- LinkedIn (replaced Twitter) -->
+        <a href="https://www.linkedin.com/in/abegail-ramiro/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+
+        <!-- Instagram -->
+        <a href="https://www.instagram.com/pixora_ph/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+          </svg>
+        </a>
       </div>
-      <p class="success-msg" id="successMsg">✓ Thanks! I'll be in touch soon.</p>
+
+      </div>
     </div>
+    
   </main>
 
   <!-- FOOTER -->
@@ -341,34 +363,5 @@
     </p>
   </footer>
 
-  <script>
-    function handleContact() {
-      const input = document.getElementById('emailInput');
-      const msg = document.getElementById('successMsg');
-      const email = input.value.trim();
-
-      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        input.style.borderColor = '#f87171';
-        input.focus();
-        setTimeout(() => input.style.borderColor = '', 1500);
-        return;
-      }
-
-      msg.style.display = 'block';
-      input.value = '';
-      input.style.borderColor = '#4EC9E1';
-      setTimeout(() => {
-        msg.style.display = 'none';
-        input.style.borderColor = '';
-      }, 4000);
-    }
-
-    // Allow Enter key
-    document.getElementById('emailInput').addEventListener('keydown', e => {
-      if (e.key === 'Enter') handleContact();
-    });
-  </script>
-
 </body>
-
 </html>
