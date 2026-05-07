@@ -3,249 +3,833 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Abegail E. Ramiro – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <title>Certificates – Abegail E. Ramiro</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --sky: #4EC9E1;
-      --sky-light: #A8E6F0;
-      --sky-dark: #1AACCC;
-      --dark: #1a1a2e;
-      --text: #2d2d2d;
-      --muted: #6b7280;
-      --bg: #ffffff;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      overflow-x: hidden;
+    :root{
+      --sky:#4EC9E1;
+      --sky-light:#A8E6F0;
+      --sky-dark:#74ccff;
+      --dark:#1a1a2e;
+      --text:#2d2d2d;
+      --muted:#6b7280;
+      --bg:#ffffff;
+      --card-bg:#f4f8fb;
     }
 
-    /* ── NAV ── */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 64px;
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      border-bottom: 1px solid rgba(78,201,225,0.12);
+    body{
+      font-family:'DM Sans',sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
+    html{
+      scroll-behavior:smooth;
     }
 
-    .logo-icon {
-      width: 46px;
-      height: 46px;
+    /* NAV */
+
+    nav{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:22px 64px;
+      position:sticky;
+      top:0;
+      background:rgba(255,255,255,0.92);
+      backdrop-filter:blur(10px);
+      z-index:100;
+      border-bottom:1px solid rgba(78,201,225,0.12);
     }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
     }
 
-    .logo-text span:first-child {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--dark);
+    .logo-icon{
+      width:46px;
+      height:46px;
     }
 
-    .logo-text span:last-child {
-      font-size: 8px;
-      letter-spacing: 2.5px;
-      color: var(--muted);
-      text-transform: uppercase;
+    .logo-text{
+      display:flex;
+      flex-direction:column;
+      line-height:1.1;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
+    .logo-text span:first-child{
+      font-family:'Playfair Display',serif;
+      font-size:18px;
+      font-weight:700;
+      letter-spacing:3px;
+      color:var(--dark);
     }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 500;
-      position: relative;
-      padding-bottom: 4px;
-      transition: color 0.2s;
+    .logo-text span:last-child{
+      font-size:8px;
+      letter-spacing:2.5px;
+      color:var(--muted);
+      text-transform:uppercase;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:36px;
+      list-style:none;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:var(--text);
+      font-size:15px;
+      font-weight:500;
+      position:relative;
+      padding-bottom:4px;
+      
     }
 
     .nav-links a.active,
-.nav-links a:hover { 
-  color: #74ccff; 
-}
-
-.nav-links a.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: #74ccff;
-  border-radius: 2px;
-}
-
-    /* ── HERO ── */
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: calc(100vh - 90px);
-      padding: 60px 64px 40px;
-      gap: 40px;
+    .nav-links a:hover{
+      color:var(--sky-dark);
     }
 
-    /* LEFT */
-    .hero-left {
-      flex: 0 0 50%;
-      max-width: 520px;
-      animation: fadeUp 0.8s ease both;
+    .nav-links a.active::after{
+      content:'';
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:2px;
+      background:var(--sky-dark);
+      border-radius:2px;
     }
 
-    .greeting {
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--text);
-      margin-bottom: 10px;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.1s forwards;
+    /* MAIN */
+
+    main{
+      max-width:1300px;
+      margin:auto;
+      padding:72px 64px 80px;
     }
 
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(36px, 4vw, 54px);
-      font-weight: 700;
-      color: #74ccff;
-      line-height: 1.15;
-      margin-bottom: 40px;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.25s forwards;
+    /* HEADER */
+
+    .page-header{
+      text-align:center;
+      margin-bottom:60px;
+     
     }
 
-    .hero-bio {
-      font-size: 16px;
-      line-height: 1.85;
-      color: var(--muted);
-      text-align: justify;
-      margin-bottom: 44px;
-      opacity: 0;
-      animation: fadeUp 0.7s ease 0.4s forwards;
+    .page-title{
+      font-family:'Playfair Display',serif;
+      font-size:clamp(36px,5vw,60px);
+      color:#1a2b4a;
+      margin-bottom:16px;
     }
 
-   
-   
-
-    /* RIGHT */
-    .hero-right {
-      flex: 0 0 48%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 32px;
-      opacity: 0;
-      animation: fadeIn 0.9s ease 0.3s forwards;
+    .page-title span{
+      color:var(--sky-dark);
     }
 
-    .photo-wrap {
-      position: relative;
-      width: 360px;
-      height: 400px;
+    .page-desc{
+      max-width:560px;
+      margin:auto;
+      color:var(--muted);
+      line-height:1.8;
+      font-size:16px;
     }
 
-    /* Decorative sky rectangle behind image */
-    .deco-rect {
-      position: absolute;
-      top: 0; right: 0;
-      width: 78%;
-      height: 88px;
-      background: var(--sky-light);
-      border-radius: 6px;
-      z-index: 0;
+    /* GRID */
+
+    .cert-grid{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:26px;
     }
 
+    /* CARD */
 
-    
-  
-    
-
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
+    .cert-card{
+      background:var(--card-bg);
+      border-radius:16px;
+      overflow:hidden;
+      border:1.5px solid #e8f0f6;
     }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 18px 28px; }
-      .hero { flex-direction: column-reverse; padding: 40px 28px; min-height: auto; }
-      .hero-left { max-width: 100%; flex: none; }
-      .hero-right { flex: none; width: 100%; }
-      .photo-wrap { width: 280px; height: 320px; margin: 0 auto; }
-      .circle-frame { width: 250px; height: 270px; }
+    .cert-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 14px 36px rgba(78,201,225,0.18);
+      border-color:var(--sky-light);
     }
+
+    /* IMAGE WRAPPER */
+
+    .cert-image-wrapper{
+      position:relative;
+      width:100%;
+      background:#fff;
+      overflow:hidden;
+    }
+
+    /* IMAGE */
+
+    .cert-img{
+      width:100%;
+      height:auto;
+      display:block;
+      cursor:pointer;
+      
+    }
+
+    .cert-img:hover{
+      transform:scale(1.02);
+    }
+
+    /* NUMBER */
+
+    .cert-num{
+      position:absolute;
+      top:12px;
+      right:14px;
+      background:rgba(255,255,255,0.92);
+      color:var(--sky-dark);
+      font-size:11px;
+      font-weight:700;
+      padding:3px 9px;
+      border-radius:20px;
+      letter-spacing:0.5px;
+      z-index:2;
+    }
+
+    /* CARD BODY */
+
+    .cert-body{
+      padding:18px 18px 20px;
+    }
+
+    .cert-issuer{
+      display:inline-block;
+      font-size:10px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:1.3px;
+      color:var(--sky-dark);
+      background:rgba(78,201,225,0.1);
+      padding:3px 10px;
+      border-radius:20px;
+      margin-bottom:10px;
+    }
+
+    .cert-title{
+      font-size:15px;
+      font-weight:700;
+      color:var(--dark);
+      line-height:1.4;
+      margin-bottom:8px;
+    }
+
+    .cert-desc{
+      font-size:13px;
+      line-height:1.65;
+      color:var(--muted);
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#4a4f56;
+      padding:26px 64px;
+      text-align:center;
+      margin-top:60px;
+    }
+
+    .footer-text{
+      font-size:15px;
+      color:#cdd1d6;
+    }
+
+    .footer-text a{
+      color:var(--sky);
+      text-decoration:none;
+      font-weight:700;
+    }
+
+    /* MODAL */
+
+    .modal{
+      display:none;
+      position:fixed;
+      z-index:9999;
+      inset:0;
+      background:rgba(0,0,0,0.9);
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .modal-content{
+      max-width:95%;
+      max-height:95vh;
+      border-radius:10px;
+      
+    }
+
+    .close-btn{
+      position:absolute;
+      top:20px;
+      right:30px;
+      color:#fff;
+      font-size:42px;
+      font-weight:bold;
+      cursor:pointer;
+    }
+
+    @keyframes zoomIn{
+      from{
+        transform:scale(0.85);
+        opacity:0;
+      }
+      to{
+        transform:scale(1);
+        opacity:1;
+      }
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(20px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1100px){
+      .cert-grid{
+        grid-template-columns:repeat(3,1fr);
+      }
+    }
+
+    @media(max-width:768px){
+
+      nav{
+        padding:18px 24px;
+      }
+
+      main{
+        padding:48px 24px 60px;
+      }
+
+      .cert-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:16px;
+      }
+
+      footer{
+        padding:22px 24px;
+      }
+    }
+
+    @media(max-width:480px){
+
+      .cert-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
   </style>
 </head>
+
 <body>
 
   <!-- NAV -->
+
   <nav>
-    <a href="#" class="logo">
-      <!-- PIXORA Logo SVG -->
-      <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+    <a href="index.html" class="logo">
+
+      <svg class="logo-icon" viewBox="0 0 46 46" fill="none">
         <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85"/>
         <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7"/>
         <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
         <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85"/>
       </svg>
+
       <div class="logo-text">
         <span>PIXORA</span>
         <span>Design · Code · Create</span>
       </div>
+
     </a>
 
     <ul class="nav-links">
-       <li><a href="index.html">Home</a></li>
-  <li><a href="about.html">About Me</a></li>
-  <li><a href="certificates.html" class="active">Certificates</a></li>
-  <li><a href="services.html">Services</a></li>
-  <li><a href="project.html">Projects</a></li>
-  <li><a href="contact.html">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Me</a></li>
+      <li><a href="certificates.html" class="active">Certificates</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="project.html">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
+
   </nav>
 
-  <img src="cons.jpg" alt="" height="500" width="500" >
-       
+  <!-- MAIN -->
+
+  <main>
+
+    <div class="page-header">
+      <h1 class="page-title">My <span>Certificates</span></h1>
+
+      <p class="page-desc">
+        A collection of certifications and achievements I've earned throughout my learning journey.
+      </p>
+    </div>
+
+    <!-- GRID -->
+
+    <div class="cert-grid">
+
+      <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">01</span>
+
+          <img
+            src="/certs/1.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            ASEAN AI-Linguistic & Cultural Exchange Participation Certificate
+          </h3>
+
+          <p class="cert-desc">
+            Certificate awarded for participating in the ASEAN AI-Linguistic & Cultural Exchange – Day 1 lecture on education, language, and Japanese learning, held at Pangasinan State University in collaboration with Thu Duc College of Technology, promoting cultural exchange and academic partnership.
+          </p>
+
+        </div>
+
       </div>
 
+      <!-- DUPLICATE MORE CERTIFICATES HERE -->
+ <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">02</span>
+
+          <img
+            src="/certs/12.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            How to Make Extra Money Doing What You Love – Webinar Attendance
+          </h3>
+
+          <p class="cert-desc">
+            Certificate of Attendance awarded for participating in the webinar “How to Make Extra Money Doing What You Love,” conducted by DICT Region 1, focusing on ICT literacy and opportunities for earning through passion-driven work.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">03</span>
+
+          <img
+            src="/certs/3.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            From Confused to Confident: Online Freelancing Workshop Participation
+          </h3>
+
+          <p class="cert-desc">
+            Certificate of Participation awarded for actively joining the “From Confused to Confident: A Realistic Roadmap to Online Freelancing” session, recognizing contribution to the successful conduct of the program and completion of 3 training hours under DICT Region 1.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">04</span>
+
+          <img
+            src="/certs/11.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            SheSecures: Empowering Women in the Digital World – Webinar Participation
+          </h3>
+
+          <p class="cert-desc">
+            Certificate awarded for active participation in the “SheSecures: Empowering Women in the Digital World” webinar held in celebration of National Women’s Month, promoting gender equality, inclusivity, and women empowerment in the digital space.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">05</span>
+
+          <img
+            src="/certs/10.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            Girl Talk: The Cybersecurity Edition – Webinar Participation
+          </h3>
+
+          <p class="cert-desc">
+            Certificate awarded for active participation in the “Girl Talk: The Cybersecurity Edition” webinar held in celebration of National Women’s Month, focusing on cybersecurity awareness, gender equality, and empowering women in the digital and tech space.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">06</span>
+
+          <img
+            src="/certs/6.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            UNHACKABLE: Digital Safety and Cybersecurity Awareness Webinar
+          </h3>
+
+          <p class="cert-desc">
+            Certificate of Attendance awarded for completing a 4-hour webinar on digital safety and cybersecurity entitled “UNHACKABLE: Your Digital Stealth Guide for Safer Internet Month,” conducted by DICT Region 1, focusing on safe online practices and internet security awareness.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">07</span>
+
+          <img
+            src="/certs/7.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+           Digital Confidence for Women – Webinar Completion
+          </h3>
+
+          <p class="cert-desc">
+            Certificate of Attendance awarded for completing a 4-hour webinar entitled “Digital Confidence for Women: Learn, Lead, Launch,” conducted by DICT Region 1, focusing on empowering women through digital skills, leadership, and online opportunities.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">08</span>
+
+          <img
+            src="/certs/8.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            From Confused to Confident: Online Freelancing Roadmap – Participation Certificate
+          </h3>
+
+          <p class="cert-desc">
+           Certificate awarded for actively participating in the “From Confused to Confident: A Realistic Roadmap to Online Freelancing” session, recognizing contribution to the successful conduct of the webinar and completion of 3 training hours under DICT Region 1.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">09</span>
+
+          <img
+            src="/certs/9.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            How to Build Your Network as a Woman Entrepreneur – Webinar Participation
+          </h3>
+
+          <p class="cert-desc">
+            Certificate of Participation awarded for actively joining the “How to Build Your Network as a Woman Entrepreneur” webinar, recognizing engagement in discussions on entrepreneurship, networking, and professional growth for women, with 3 earned training hours under DICT Region 1.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">10</span>
+
+          <img
+            src="/certs/2.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            2026 RSTW Day 2 Participation Certificate
+          </h3>
+
+          <p class="cert-desc">
+           Certificate awarded for active participation in the 2026 Regional Science and Technology Week (RSTW) Day 2 held in Dagupan City, Pangasinan, recognizing involvement in activities promoting science, technology, and innovation for building smart and sustainable communities.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">11</span>
+
+          <img
+            src="/certs/4.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            2026 RSTW Day 3 Appearance Certificate
+          </h3>
+
+          <p class="cert-desc">
+           Certificate of Appearance issued for attending and participating in the 2026 Regional Science and Technology Week (RSTW) Day 3 at CSI Stadia, Dagupan City, recognizing involvement in initiatives promoting science, technology, and innovation for smart and sustainable communities.
+          </p>
+
+        </div>
+
+      </div>
+       <!-- CARD1 -->
+
+      <div class="cert-card">
+
+        <div class="cert-image-wrapper">
+
+          <span class="cert-num">12</span>
+
+          <img
+            src="/certs/5.jpg"
+            alt="Certificate"
+            class="cert-img"
+            onclick="openModal(this.src)"
+          >
+
+        </div>
+
+        <div class="cert-body">
+
+          <span class="cert-issuer"></span>
+
+          <h3 class="cert-title">
+            Smart Solutions for Sustainable Communities – Appearance Certificate
+          </h3>
+
+          <p class="cert-desc">
+            Certificate of Appearance issued for attending and participating in the “Smart Solutions for Sustainable Communities” event held at CSI Stadia, Dagupan City, Pangasinan during the 2026 RSTW celebration, recognizing involvement in discussions promoting science, technology, and sustainable community development.
+          </p>
+
+        </div>
+
+      </div>
       
-  </section>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <p class="footer-text">
+      &copy; 2026 <a href="index.html">Abegail</a> All Rights Reserved.
+    </p>
+
+  </footer>
+
+  <!-- MODAL -->
+
+  <div id="imgModal" class="modal" onclick="closeModal()">
+
+    <span class="close-btn">&times;</span>
+
+    <img class="modal-content" id="modalImg">
+
+  </div>
+
+  <!-- SCRIPT -->
+
+  <script>
+
+    function openModal(src){
+      document.getElementById("imgModal").style.display = "flex";
+      document.getElementById("modalImg").src = src;
+    }
+
+    function closeModal(){
+      document.getElementById("imgModal").style.display = "none";
+    }
+
+  </script>
 
 </body>
 </html>
