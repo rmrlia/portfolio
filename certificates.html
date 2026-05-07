@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Abegail E. Ramiro – Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --sky: #4EC9E1;
+      --sky-light: #A8E6F0;
+      --sky-dark: #1AACCC;
+      --dark: #1a1a2e;
+      --text: #2d2d2d;
+      --muted: #6b7280;
+      --bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 64px;
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(78,201,225,0.12);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 46px;
+      height: 46px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.1;
+    }
+
+    .logo-text span:first-child {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--dark);
+    }
+
+    .logo-text span:last-child {
+      font-size: 8px;
+      letter-spacing: 2.5px;
+      color: var(--muted);
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a.active,
+.nav-links a:hover { 
+  color: #74ccff; 
+}
+
+.nav-links a.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #74ccff;
+  border-radius: 2px;
+}
+
+    /* ── HERO ── */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: calc(100vh - 90px);
+      padding: 60px 64px 40px;
+      gap: 40px;
+    }
+
+    /* LEFT */
+    .hero-left {
+      flex: 0 0 50%;
+      max-width: 520px;
+      animation: fadeUp 0.8s ease both;
+    }
+
+    .greeting {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 10px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.1s forwards;
+    }
+
+    .hero-name {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 700;
+      color: #74ccff;
+      line-height: 1.15;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.25s forwards;
+    }
+
+    .hero-bio {
+      font-size: 16px;
+      line-height: 1.85;
+      color: var(--muted);
+      text-align: justify;
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease 0.4s forwards;
+    }
+
+   
+   
+
+    /* RIGHT */
+    .hero-right {
+      flex: 0 0 48%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 32px;
+      opacity: 0;
+      animation: fadeIn 0.9s ease 0.3s forwards;
+    }
+
+    .photo-wrap {
+      position: relative;
+      width: 360px;
+      height: 400px;
+    }
+
+    /* Decorative sky rectangle behind image */
+    .deco-rect {
+      position: absolute;
+      top: 0; right: 0;
+      width: 78%;
+      height: 88px;
+      background: var(--sky-light);
+      border-radius: 6px;
+      z-index: 0;
+    }
+
+
+    
+  
+    
+
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 18px 28px; }
+      .hero { flex-direction: column-reverse; padding: 40px 28px; min-height: auto; }
+      .hero-left { max-width: 100%; flex: none; }
+      .hero-right { flex: none; width: 100%; }
+      .photo-wrap { width: 280px; height: 320px; margin: 0 auto; }
+      .circle-frame { width: 250px; height: 270px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="logo">
+      <!-- PIXORA Logo SVG -->
+      <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85"/>
+        <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
+        <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85"/>
+      </svg>
+      <div class="logo-text">
+        <span>PIXORA</span>
+        <span>Design · Code · Create</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+       <li><a href="index.html">Home</a></li>
+  <li><a href="about.html">About Me</a></li>
+  <li><a href="certificates.html" class="active">Certificates</a></li>
+  <li><a href="services.html">Services</a></li>
+  <li><a href="project.html">Projects</a></li>
+  <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <img src="cons.jpg" alt="" height="500" width="500" >
+       
+      </div>
+
+      
+  </section>
+
+</body>
+</html>
