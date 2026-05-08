@@ -4,15 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Abegail E. Ramiro – Portfolio</title>
-
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet"/>
-
   <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
       --sky: #4EC9E1;
@@ -24,9 +18,7 @@
       --bg: #ffffff;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
 
     body {
       font-family: 'DM Sans', sans-serif;
@@ -57,16 +49,9 @@
       text-decoration: none;
     }
 
-    .logo-icon {
-      width: 46px;
-      height: 46px;
-    }
+    .logo-icon { width: 46px; height: 46px; }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
 
     .logo-text span:first-child {
       font-family: 'Playfair Display', serif;
@@ -81,6 +66,22 @@
       letter-spacing: 2.5px;
       color: var(--muted);
       text-transform: uppercase;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
     }
 
     .nav-links {
@@ -99,30 +100,26 @@
     }
 
     .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--sky-dark);
-    }
+    .nav-links a.active { color: #74ccff; }
 
     .nav-links a.active::after {
       content: '';
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
+      bottom: 0; left: 0; right: 0;
       height: 2px;
-      background: var(--sky-dark);
+      background: #74ccff;
       border-radius: 2px;
     }
 
     /* ── HERO ── */
-   .hero {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  min-height: calc(100vh - 90px);
-  padding: 90px 80px 60px;
-  gap: 60px;
-}
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: calc(100vh - 90px);
+      padding: 90px 80px 60px;
+      gap: 60px;
+    }
 
     /* LEFT */
     .hero-left {
@@ -130,45 +127,43 @@
       max-width: 520px;
     }
 
-   .greeting {
-  font-size: 22px;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
+    .greeting {
+      font-size: 22px;
+      font-weight: 500;
+      margin-bottom: 12px;
+    }
 
     .hero-name {
-  font-family: 'Playfair Display', serif;
-  font-size: clamp(48px, 5vw, 72px);
-  font-weight: 700;
-  color: #74ccff;
-  line-height: 1.1;
-  margin-bottom: 40px;
-}
-
-   .hero-bio {
-  font-size: 18px;
-  line-height: 1.9;
-  color: var(--muted);
-  text-align: justify;
-  margin-bottom: 50px;
-  max-width: 520px;
-}
-
-  .btn-hire {
-  display: inline-block;
-  padding: 16px 48px;
-  background: #74ccff;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  border-radius: 10px;
-  text-decoration: none;
-  box-shadow: 0 8px 25px rgba(78,201,225,0.35);
-  transition: 0.2s ease;
-}
-    .btn-hire:hover {
-      background: #1e6c9a;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 5vw, 72px);
+      font-weight: 700;
+      color: #74ccff;
+      line-height: 1.1;
+      margin-bottom: 40px;
     }
+
+    .hero-bio {
+      font-size: 18px;
+      line-height: 1.9;
+      color: var(--muted);
+      text-align: justify;
+      margin-bottom: 50px;
+      max-width: 520px;
+    }
+
+    .btn-hire {
+      display: inline-block;
+      padding: 16px 48px;
+      background: #74ccff;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(78,201,225,0.35);
+    }
+
+    .btn-hire:hover { background: #1e6c9a; }
 
     /* SOCIAL */
     .social-links {
@@ -189,18 +184,11 @@
       text-decoration: none;
     }
 
-    .social-links a:hover {
-      background: #74ccff;
-      color: #fff;
-    }
+    .social-links a:hover { background: #74ccff; color: #fff; }
 
-    .social-links svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-    }
+    .social-links svg { width: 20px; height: 20px; fill: currentColor; }
 
-    /* ── RIGHT ── */
+    /* RIGHT */
     .hero-right {
       flex: 0 0 48%;
       display: flex;
@@ -210,54 +198,78 @@
     }
 
     .photo-wrap {
-  width: 440px;
-  height: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+      width: 440px;
+      height: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
     .photo-wrap img {
-  width: 100%;
-  max-width: 440px;
-  height: auto;
-  object-fit: contain;
- 
-}
+      width: 100%;
+      max-width: 440px;
+      height: auto;
+      object-fit: contain;
+    }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav {
-        padding: 18px 28px;
+    @media (max-width: 1024px) {
+      .hero { padding: 60px 40px; gap: 40px; }
+      .photo-wrap { width: 360px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+
+      .hamburger { display: flex; }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        position: absolute;
+        top: 100%;
+        left: 0; right: 0;
+        background: #fff;
+        border-bottom: 1px solid rgba(78,201,225,0.15);
+        padding: 8px 0;
+        z-index: 200;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-links li a {
+        display: block;
+        padding: 12px 24px;
+        font-size: 15px;
       }
 
       .hero {
         flex-direction: column-reverse;
-        padding: 40px 28px;
+        padding: 36px 24px 48px;
         min-height: auto;
+        gap: 32px;
       }
 
-      .hero-left,
-     .hero-right {
-  flex: 0 0 45%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 32px;
-}
+      .hero-left { flex: none; max-width: 100%; }
+      .hero-right { flex: none; width: 100%; }
 
-      .photo-wrap {
-        width: 280px;
-        height: auto;
-      }
+      .photo-wrap { width: 260px; }
+
+      .hero-name { font-size: clamp(36px, 9vw, 52px); margin-bottom: 24px; }
+      .greeting { font-size: 18px; }
+      .hero-bio { font-size: 15px; margin-bottom: 32px; }
+      .btn-hire { padding: 14px 36px; font-size: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .photo-wrap { width: 200px; }
+      .hero { padding: 28px 16px 40px; }
     }
   </style>
 </head>
-
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#" class="logo">
     <svg class="logo-icon" viewBox="0 0 46 46" fill="none">
@@ -266,15 +278,18 @@
       <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
       <circle cx="33" cy="33" r="11" fill="#4EC9E1" opacity="0.85"/>
     </svg>
-
     <div class="logo-text">
       <span>PIXORA</span>
       <span>Design · Code · Create</span>
     </div>
   </a>
 
-  <ul class="nav-links">
-    <li><a href="#" class="active">Home</a></li>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+
+  <ul class="nav-links" id="navMenu">
+    <li><a href="index.html" class="active">Home</a></li>
     <li><a href="about.html">About Me</a></li>
     <li><a href="certificates.html">Certificates</a></li>
     <li><a href="services.html">Services</a></li>
@@ -283,35 +298,28 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-
-  <!-- LEFT -->
   <div class="hero-left">
     <p class="greeting">Hi I am</p>
-
     <h1 class="hero-name">Abegail E. Ramiro</h1>
-
     <p class="hero-bio">
       I build responsive, user-friendly, and modern websites and mobile applications
       that deliver great user experiences and clean functionality.
     </p>
-
     <a href="contact.html" class="btn-hire">Hire Me</a>
-
-    <div class="social-links">
-      <!-- icons unchanged -->
-    </div>
+    <div class="social-links"></div>
   </div>
-
-  <!-- RIGHT -->
   <div class="hero-right">
     <div class="photo-wrap">
       <img src="pic.jpg" alt="Profile Image">
     </div>
   </div>
-
 </section>
 
+<script>
+  function toggleMenu() {
+    document.getElementById('navMenu').classList.toggle('open');
+  }
+</script>
 </body>
 </html>

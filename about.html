@@ -42,65 +42,30 @@
       border-bottom: 1px solid rgba(78,201,225,0.12);
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-icon { width: 46px; height: 46px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-text span:first-child { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; letter-spacing: 3px; color: var(--dark); }
+    .logo-text span:last-child { font-size: 8px; letter-spacing: 2.5px; color: var(--muted); text-transform: uppercase; }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
 
-    .logo-text span:first-child {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--dark);
-    }
-
-    .logo-text span:last-child {
-      font-size: 8px;
-      letter-spacing: 2.5px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
 
     .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 500;
-      position: relative;
-      padding-bottom: 4px;
-      transition: color 0.2s;
+      text-decoration: none; color: var(--text); font-size: 15px; font-weight: 500;
+      position: relative; padding-bottom: 4px;
     }
 
-    .nav-links a.active,
-    .nav-links a:hover { color: #74ccff; }
+    .nav-links a.active, .nav-links a:hover { color: #74ccff; }
 
     .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: #74ccff;
-      border-radius: 2px;
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 2px; background: #74ccff; border-radius: 2px;
     }
 
-    /* ── ABOUT SECTION ── */
+    /* ── ABOUT ── */
     .about {
       display: flex;
       align-items: flex-start;
@@ -110,153 +75,131 @@
       gap: 60px;
     }
 
-    /* LEFT – photo */
-    
+    .about-left { flex: 0 0 42%; }
 
-    .photo-wrap {
-      position: relative;
-      width: 360px;
-      height: 420px;
-    }
+    .photo-wrap { position: relative; width: 360px; height: 420px; }
 
     .deco-rect {
-      position: absolute;
-      top: 0; left: 0;
-      width: 80%;
-      height: 90px;
-      background: var(--sky-light);
-      border-radius: 6px;
-      z-index: 0;
+      position: absolute; top: 0; left: 0;
+      width: 80%; height: 90px;
+      background: var(--sky-light); border-radius: 6px; z-index: 0;
     }
 
     .circle-frame {
-      position: absolute;
-      top: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 320px;
-      height: 360px;
-      border-radius: 50%;
-      border: 3px solid var(--sky);
-      overflow: hidden;
-      z-index: 1;
-      background: #e8f7fb;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      position: absolute; top: 28px; left: 50%; transform: translateX(-50%);
+      width: 320px; height: 360px; border-radius: 50%;
+      border: 3px solid var(--sky); overflow: hidden; z-index: 1;
+      background: #e8f7fb; display: flex; align-items: center; justify-content: center;
     }
 
-    .placeholder-person {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(160deg, #daf3f8 0%, #c2edf6 100%);
-    }
-
-    .placeholder-person svg { opacity: 0.5; }
-
-    /* RIGHT – content */
-    @keyframes fadeOnly {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+    .about-right { flex: 1; padding-top: 10px; }
 
     .about-title {
       font-family: 'Playfair Display', serif;
       font-size: clamp(40px, 5vw, 64px);
-      font-weight: 700;
-      color: #1a2b4a;
-      margin-bottom: 28px;
-      line-height: 1.1;
+      font-weight: 700; color: #1a2b4a;
+      margin-bottom: 28px; line-height: 1.1;
     }
 
-    .about-bio {
-      font-size: 16px;
-      line-height: 1.85;
-      color: var(--muted);
-      margin-bottom: 40px;
-    }
+    .about-bio { font-size: 16px; line-height: 1.85; color: var(--muted); margin-bottom: 40px; }
 
-    /* ── SKILL BARS ── */
     .skills { display: flex; flex-direction: column; gap: 22px; }
-
     .skill-item { display: flex; flex-direction: column; gap: 8px; }
-
-    .skill-label {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--dark);
-    }
+    .skill-label { font-size: 15px; font-weight: 700; color: var(--dark); }
 
     .skill-track {
-      position: relative;
-      height: 10px;
-      background: #e5e7eb;
-      border-radius: 99px;
-      overflow: visible;
+      position: relative; height: 10px;
+      background: #e5e7eb; border-radius: 99px; overflow: visible;
     }
 
     .skill-fill {
-      height: 100%;
-      border-radius: 99px;
-      background: var(--sky);
-      position: relative;
-      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%; border-radius: 99px; background: var(--sky);
+      position: relative; width: 0;
     }
 
-    /* Thumb circle at end of bar */
     .skill-fill::after {
-      content: '';
-      position: absolute;
-      right: -8px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: #fff;
-      border: 3px solid var(--sky);
+      content: ''; position: absolute; right: -8px; top: 50%;
+      transform: translateY(-50%); width: 20px; height: 20px;
+      border-radius: 50%; background: #fff; border: 3px solid var(--sky);
       box-shadow: 0 2px 8px rgba(78,201,225,0.3);
     }
 
-    /* Animate bars on load */
-    .skill-fill { width: 0; }
     .skill-fill.animate { animation: growBar 1.2s cubic-bezier(0.4,0,0.2,1) forwards; }
 
-    @keyframes growBar {
-      from { width: 0; }
-      to   { width: var(--target-width); }
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
+    @keyframes growBar { from { width: 0; } to { width: var(--target-width); } }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      nav { padding: 18px 28px; }
-      .about { flex-direction: column; padding: 40px 28px; min-height: auto; }
-      .about-left { flex: none; width: 100%; }
-      .photo-wrap { width: 280px; height: 340px; margin: 0 auto; }
-      .circle-frame { width: 250px; height: 280px; }
+    @media (max-width: 1024px) {
+      .about { padding: 50px 40px; gap: 40px; }
+      .photo-wrap { width: 300px; height: 360px; }
+      .circle-frame { width: 270px; height: 310px; }
+    }
+
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: #fff; border-bottom: 1px solid rgba(78,201,225,0.15);
+        padding: 8px 0; z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 12px 24px; }
+
+      .about {
+        flex-direction: column;
+        padding: 36px 24px 48px;
+        min-height: auto; gap: 36px;
+      }
+
+      .about-left { flex: none; width: 100%; display: flex; justify-content: center; }
+
+      /* On mobile: remove fixed size, remove circular clip */
+      .photo-wrap {
+        width: 100%;
+        height: auto;
+        position: static;
+      }
+
+      .photo-wrap img {
+        position: static !important;
+        border-radius: 12px !important;
+        width: 100% !important;
+        height: auto !important;
+        max-width: 340px;
+        object-fit: cover;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* Hide the deco-rect and circle-frame on mobile */
+      .deco-rect { display: none; }
+      .circle-frame {
+        position: static;
+        transform: none;
+        border-radius: 12px;
+        border: none;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+        background: none;
+      }
+
       .about-right { padding-top: 0; }
+      .about-title { font-size: clamp(32px, 8vw, 48px); }
+    }
+
+    @media (max-width: 480px) {
+      .about { padding: 28px 16px 40px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
     <a href="index.html" class="logo">
-      <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="logo-icon" viewBox="0 0 46 46" fill="none">
         <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85"/>
         <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7"/>
         <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
@@ -268,34 +211,29 @@
       </div>
     </a>
 
-    <ul class="nav-links">
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="navMenu">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html" class="active">About Me</a></li>
-       <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="project.html">Projects</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- ABOUT -->
   <section class="about">
-
-    <!-- LEFT – photo placeholder -->
     <div class="about-left">
       <div class="photo-wrap">
-       
-       <img src="pic.jpg" height="400" width="370" alt="">
-            </svg>
-          </div>
-        </div>
+        <img src="pic.jpg" height="400" width="370" alt="" style="position:relative;z-index:1;border-radius:50%;object-fit:cover;width:100%;height:100%;">
       </div>
     </div>
 
-    <!-- RIGHT – content + skills -->
     <div class="about-right">
       <h2 class="about-title">About Me</h2>
-
       <p class="about-bio">
         I am a passionate web and mobile developer focused on creating clean, responsive,
         and functional digital solutions. I specialize in turning ideas into real-world
@@ -304,49 +242,32 @@
       </p>
 
       <div class="skills">
-
         <div class="skill-item">
           <span class="skill-label">UX</span>
-          <div class="skill-track">
-            <div class="skill-fill" style="--target-width: 90%"></div>
-          </div>
+          <div class="skill-track"><div class="skill-fill" style="--target-width: 90%"></div></div>
         </div>
-
         <div class="skill-item">
           <span class="skill-label">Website Design</span>
-          <div class="skill-track">
-            <div class="skill-fill" style="--target-width: 88%"></div>
-          </div>
+          <div class="skill-track"><div class="skill-fill" style="--target-width: 88%"></div></div>
         </div>
-
         <div class="skill-item">
           <span class="skill-label">App Design</span>
-          <div class="skill-track">
-            <div class="skill-fill" style="--target-width: 93%"></div>
-          </div>
+          <div class="skill-track"><div class="skill-fill" style="--target-width: 93%"></div></div>
         </div>
-
         <div class="skill-item">
           <span class="skill-label">Graphic Design</span>
-          <div class="skill-track">
-            <div class="skill-fill" style="--target-width: 91%"></div>
-          </div>
+          <div class="skill-track"><div class="skill-fill" style="--target-width: 91%"></div></div>
         </div>
-
         <div class="skill-item">
           <span class="skill-label">Web &amp; Mobile Developer</span>
-          <div class="skill-track">
-            <div class="skill-fill" style="--target-width: 92%"></div>
-          </div>
+          <div class="skill-track"><div class="skill-fill" style="--target-width: 92%"></div></div>
         </div>
-
       </div>
     </div>
-
   </section>
 
   <script>
-    // Trigger bar animations after page load
+    function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
     window.addEventListener('load', () => {
       setTimeout(() => {
         document.querySelectorAll('.skill-fill').forEach((bar, i) => {
@@ -355,6 +276,5 @@
       }, 400);
     });
   </script>
-
 </body>
 </html>

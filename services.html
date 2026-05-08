@@ -29,301 +29,110 @@
       overflow-x: hidden;
     }
 
-    /* ── NAV ── */
+    /* NAV */
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 22px 64px;
-      position: sticky;
-      top: 0;
-      background: rgba(255,255,255,0.92);
-      backdrop-filter: blur(10px);
-      z-index: 100;
-      border-bottom: 1px solid rgba(78,201,225,0.12);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 64px; position: sticky; top: 0;
+      background: rgba(255,255,255,0.92); backdrop-filter: blur(10px);
+      z-index: 100; border-bottom: 1px solid rgba(78,201,225,0.12);
     }
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      text-decoration: none;
-    }
-
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
     .logo-icon { width: 46px; height: 46px; }
+    .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .logo-text span:first-child { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; letter-spacing: 3px; color: var(--dark); }
+    .logo-text span:last-child { font-size: 8px; letter-spacing: 2.5px; color: var(--muted); text-transform: uppercase; }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.1;
-    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
 
-    .logo-text span:first-child {
-      font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 3px;
-      color: var(--dark);
-    }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { text-decoration: none; color: var(--text); font-size: 15px; font-weight: 500; position: relative; padding-bottom: 4px; }
+    .nav-links a.active, .nav-links a:hover { color: var(--sky-dark); }
+    .nav-links a.active::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: var(--sky-dark); border-radius: 2px; }
 
-    .logo-text span:last-child {
-      font-size: 8px;
-      letter-spacing: 2.5px;
-      color: var(--muted);
-      text-transform: uppercase;
-    }
+    /* PAGE */
+    .services-page { padding: 70px 64px 80px; max-width: 1300px; margin: 0 auto; }
 
-    .nav-links {
-      display: flex;
-      gap: 40px;
-      list-style: none;
-    }
+    .page-header { text-align: center; margin-bottom: 56px; }
 
-    .nav-links a {
-      text-decoration: none;
-      color: var(--text);
-      font-size: 15px;
-      font-weight: 500;
-      position: relative;
-      padding-bottom: 4px;
-      
-    }
+    .page-title { font-family: 'Playfair Display', serif; font-size: clamp(38px, 5vw, 64px); font-weight: 700; color: #1a2b4a; margin-bottom: 22px; line-height: 1.1; }
+    .page-title span { color: var(--sky-dark); }
+    .page-subtitle { font-size: 17px; line-height: 1.8; color: var(--muted); max-width: 680px; margin: 0 auto; }
 
-    .nav-links a.active,
-    .nav-links a:hover { color: var(--sky-dark); }
-
-    .nav-links a.active::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--sky-dark);
-      border-radius: 2px;
-    }
-
-    /* ── PAGE WRAPPER ── */
-    .services-page {
-      padding: 70px 64px 80px;
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    /* ── HEADER ── */
-    .page-header {
-      text-align: center;
-      margin-bottom: 56px;
-      opacity: 1;
-     
-    }
-
-    .page-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(38px, 5vw, 64px);
-      font-weight: 700;
-      color: #1a2b4a;
-      margin-bottom: 22px;
-      line-height: 1.1;
-    }
-
-    .page-title span {
-      color: var(--sky-dark);
-    }
-
-    .page-subtitle {
-      font-size: 17px;
-      line-height: 1.8;
-      color: var(--muted);
-      max-width: 680px;
-      margin: 0 auto;
-    }
-
-    /* ── TABS ── */
-    .tabs {
-      display: flex;
-      border-bottom: 1.5px solid #e5e7eb;
-      margin-bottom: 48px;
-      opacity: 1;
-      
-    }
-
+    /* TABS */
+    .tabs { display: flex; border-bottom: 1.5px solid #e5e7eb; margin-bottom: 48px; overflow-x: auto; }
     .tab-btn {
-      flex: 1;
-      padding: 14px 0;
-      background: none;
-      border: none;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--muted);
-      cursor: pointer;
-      position: relative;
-      
+      flex: 1; padding: 14px 0; background: none; border: none;
+      font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 500;
+      color: var(--muted); cursor: pointer; position: relative; white-space: nowrap;
     }
+    .tab-btn.active { color: var(--sky-dark); font-weight: 600; }
+    .tab-btn.active::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2.5px; background: var(--sky-dark); border-radius: 2px; }
 
-    .tab-btn.active {
-      color: var(--sky-dark);
-      font-weight: 600;
-    }
-
-    .tab-btn.active::after {
-      content: '';
-      position: absolute;
-      bottom: -2px; left: 0; right: 0;
-      height: 2.5px;
-      background: var(--sky-dark);
-      border-radius: 2px;
-    }
-
-    /* ── TAB PANELS ── */
+    /* PANELS */
     .tab-panel { display: none; }
-    .tab-panel.active {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      opacity: 1;
-      
-    }
+    .tab-panel.active { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
 
-    /* ── SERVICE CARD ── */
-    .card {
-      background: var(--card-bg);
-      border-radius: 14px;
-      padding: 32px 24px 28px;
-      
-    }
+    /* CARD */
+    .card { background: var(--card-bg); border-radius: 14px; padding: 32px 24px 28px; }
+    .card:hover { box-shadow: 0 12px 32px rgba(78,201,225,0.15); }
+    .card-icon { width: 64px; height: 64px; margin-bottom: 20px; }
+    .card-title { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 12px; }
+    .card-desc { font-size: 14px; line-height: 1.75; color: var(--muted); }
 
-    .card:hover {
-  box-shadow: 0 12px 32px rgba(78,201,225,0.15);
-}
+    /* SKILLS */
+    #skills-panel.active { grid-template-columns: repeat(2, 1fr); }
 
-    .card-icon {
-      width: 64px;
-      height: 64px;
-      margin-bottom: 20px;
-    }
+    .skill-card { background: var(--card-bg); border-radius: 14px; padding: 28px 28px 24px; }
+    .skill-card-header { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; }
+    .skill-badge { width: 44px; height: 44px; border-radius: 10px; background: var(--sky-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .skill-badge svg { width: 24px; height: 24px; fill: var(--sky-dark); }
+    .skill-name { font-size: 16px; font-weight: 700; color: var(--dark); }
+    .skill-pct { font-size: 13px; color: var(--muted); margin-top: 2px; }
 
-    .card-title {
-      font-size: 20px;
-      font-weight: 700;
-      color: var(--dark);
-      margin-bottom: 12px;
-    }
+    .skill-track { height: 9px; background: #e5e7eb; border-radius: 99px; overflow: visible; position: relative; }
+    .skill-fill { height: 100%; border-radius: 99px; background: linear-gradient(90deg, var(--sky-light), var(--sky-dark)); position: relative; width: 0; }
+    .skill-fill::after { content: ''; position: absolute; right: -8px; top: 50%; transform: translateY(-50%); width: 20px; height: 20px; border-radius: 50%; background: #fff; border: 3px solid var(--sky); box-shadow: 0 2px 8px rgba(78,201,225,0.3); }
+    .skill-fill.animate { animation: growBar 1.2s cubic-bezier(0.4,0,0.2,1) forwards; }
+    @keyframes growBar { from { width: 0; } to { width: var(--target-width); } }
 
-    .card-desc {
-      font-size: 14px;
-      line-height: 1.75;
-      color: var(--muted);
-    }
-
-    /* ── SKILLS GRID (tab 2) ── */
-    #skills-panel.active {
-      grid-template-columns: repeat(2, 1fr);
-    }
-
-    .skill-card {
-      background: var(--card-bg);
-      border-radius: 14px;
-      padding: 28px 28px 24px;
-    }
-
-    .skill-card-header {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .skill-badge {
-      width: 44px;
-      height: 44px;
-      border-radius: 10px;
-      background: var(--sky-light);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .skill-badge svg {
-      width: 24px;
-      height: 24px;
-      fill: var(--sky-dark);
-    }
-
-    .skill-name {
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--dark);
-    }
-
-    .skill-pct {
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 2px;
-    }
-
-    .skill-track {
-      height: 9px;
-      background: #e5e7eb;
-      border-radius: 99px;
-      overflow: visible;
-      position: relative;
-    }
-
-    .skill-fill {
-      height: 100%;
-      border-radius: 99px;
-      background: linear-gradient(90deg, var(--sky-light), var(--sky-dark));
-      position: relative;
-      width: 0;
-    }
-
-    .skill-fill::after {
-      content: '';
-      position: absolute;
-      right: -8px; top: 50%;
-      transform: translateY(-50%);
-      width: 20px; height: 20px;
-      border-radius: 50%;
-      background: #fff;
-      border: 3px solid var(--sky);
-      box-shadow: 0 2px 8px rgba(78,201,225,0.3);
-    }
-
-    .skill-fill.animate {
-      animation: growBar 1.2s cubic-bezier(0.4,0,0.2,1) forwards;
-    }
-
-    @keyframes growBar {
-      from { width: 0; }
-      to   { width: var(--target-width); }
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 1100px) {
       .tab-panel.active { grid-template-columns: repeat(2, 1fr); }
+      #skills-panel.active { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 768px) {
-      nav { padding: 18px 28px; }
-      .services-page { padding: 40px 28px 60px; }
+      nav { padding: 16px 24px; }
+      .hamburger { display: flex; }
+      .nav-links {
+        display: none; flex-direction: column; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0;
+        background: #fff; border-bottom: 1px solid rgba(78,201,225,0.15);
+        padding: 8px 0; z-index: 200;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li a { display: block; padding: 12px 24px; }
+
+      .services-page { padding: 40px 24px 60px; }
       .tab-panel.active { grid-template-columns: 1fr; }
       #skills-panel.active { grid-template-columns: 1fr; }
+      .tabs { gap: 0; }
+      .tab-btn { font-size: 14px; padding: 12px 8px; }
+      .page-title { font-size: clamp(28px, 8vw, 44px); }
+    }
+
+    @media (max-width: 480px) {
+      .services-page { padding: 28px 16px 48px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
   <nav>
-    <a href="home.html" class="logo">
-      <svg class="logo-icon" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <a href="index.html" class="logo">
+      <svg class="logo-icon" viewBox="0 0 46 46" fill="none">
         <circle cx="13" cy="13" r="11" fill="#4EC9E1" opacity="0.85"/>
         <circle cx="33" cy="13" r="11" fill="#74D9ED" opacity="0.7"/>
         <circle cx="13" cy="33" r="11" fill="#74D9ED" opacity="0.7"/>
@@ -335,41 +144,34 @@
       </div>
     </a>
 
-    <ul class="nav-links">
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="navMenu">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About Me</a></li>
-       <li><a href="certificates.html">Certificates</a></li>
+      <li><a href="certificates.html">Certificates</a></li>
       <li><a href="services.html" class="active">Services</a></li>
       <li><a href="project.html">Projects</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- SERVICES PAGE -->
   <div class="services-page">
-
-    <!-- Header -->
     <div class="page-header">
       <h1 class="page-title">Services <span>&amp; Skills</span></h1>
-      <p class="page-subtitle">
-        I provide web development and digital solutions focused on creating modern,
-        responsive, and efficient systems. I aim to deliver high-quality digital products
-        that combine functionality, clean design, and user-friendly experience.
-      </p>
+      <p class="page-subtitle">I provide web development and digital solutions focused on creating modern, responsive, and efficient systems. I aim to deliver high-quality digital products that combine functionality, clean design, and user-friendly experience.</p>
     </div>
 
-    <!-- Tabs -->
     <div class="tabs">
       <button class="tab-btn active" onclick="switchTab('services', this)">Services</button>
       <button class="tab-btn" onclick="switchTab('skills', this)">Skills</button>
     </div>
 
-    <!-- Services Panel -->
     <div class="tab-panel active" id="services-panel">
-
-      <!-- Creative Design -->
       <div class="card">
-        <svg class="card-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="card-icon" viewBox="0 0 64 64" fill="none">
           <rect x="4" y="8" width="56" height="10" rx="2" stroke="#4EC9E1" stroke-width="2.5" fill="none"/>
           <rect x="4" y="24" width="26" height="8" rx="2" stroke="#4EC9E1" stroke-width="2.5" fill="none"/>
           <rect x="4" y="38" width="26" height="8" rx="2" stroke="#4EC9E1" stroke-width="2.5" fill="none"/>
@@ -380,10 +182,8 @@
         <h3 class="card-title">Creative Design</h3>
         <p class="card-desc">Ability to create visually appealing and user-friendly designs for digital content, including layouts, graphics, and interfaces.</p>
       </div>
-
-      <!-- Web Development -->
       <div class="card">
-        <svg class="card-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="card-icon" viewBox="0 0 64 64" fill="none">
           <rect x="6" y="6" width="52" height="38" rx="3" stroke="#4EC9E1" stroke-width="2.5" fill="none"/>
           <line x1="6" y1="18" x2="58" y2="18" stroke="#4EC9E1" stroke-width="2.5"/>
           <rect x="20" y="48" width="24" height="6" rx="2" stroke="#4EC9E1" stroke-width="2.5" fill="none"/>
@@ -395,25 +195,19 @@
         <h3 class="card-title">Web Development</h3>
         <p class="card-desc">Developing responsive and user-friendly websites focused on functionality, clean structure, and smooth user experience.</p>
       </div>
-
-      <!-- App Design -->
       <div class="card">
-        <svg class="card-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="card-icon" viewBox="0 0 64 64" fill="none">
           <rect x="16" y="4" width="32" height="56" rx="4" stroke="#4EC9E1" stroke-width="2.5" fill="none"/>
           <line x1="16" y1="14" x2="48" y2="14" stroke="#4EC9E1" stroke-width="2"/>
           <line x1="16" y1="50" x2="48" y2="50" stroke="#4EC9E1" stroke-width="2"/>
           <rect x="22" y="20" width="20" height="16" rx="2" stroke="#4EC9E1" stroke-width="2" fill="none"/>
-          <line x1="26" y1="25" x2="38" y2="25" stroke="#4EC9E1" stroke-width="1.5"/>
-          <line x1="26" y1="30" x2="34" y2="30" stroke="#4EC9E1" stroke-width="1.5"/>
           <circle cx="32" cy="54" r="2" stroke="#4EC9E1" stroke-width="1.5" fill="none"/>
         </svg>
         <h3 class="card-title">App Design</h3>
         <p class="card-desc">Creating modern and intuitive app interfaces with attention to usability, layout, and visual consistency.</p>
       </div>
-
-      <!-- Graphic Design -->
       <div class="card">
-        <svg class="card-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="card-icon" viewBox="0 0 64 64" fill="none">
           <rect x="4" y="8" width="56" height="42" rx="3" stroke="#4EC9E1" stroke-width="2.5" fill="none"/>
           <circle cx="14" cy="18" r="3" stroke="#4EC9E1" stroke-width="2" fill="none"/>
           <circle cx="24" cy="18" r="3" stroke="#4EC9E1" stroke-width="2" fill="none"/>
@@ -426,130 +220,72 @@
         <h3 class="card-title">Graphic Design</h3>
         <p class="card-desc">Designing visually appealing graphics and layouts that effectively communicate ideas and strengthen brand identity.</p>
       </div>
-
     </div>
 
-    <!-- Skills Panel -->
     <div class="tab-panel" id="skills-panel">
-
       <div class="skill-card">
         <div class="skill-card-header">
-          <div class="skill-badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
-          </div>
-          <div>
-            <div class="skill-name">UX Design</div>
-            <div class="skill-pct">90%</div>
-          </div>
+          <div class="skill-badge"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></div>
+          <div><div class="skill-name">UX Design</div><div class="skill-pct">90%</div></div>
         </div>
-        <div class="skill-track">
-          <div class="skill-fill" style="--target-width: 90%"></div>
-        </div>
+        <div class="skill-track"><div class="skill-fill" style="--target-width:90%"></div></div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-header">
-          <div class="skill-badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z"/></svg>
-          </div>
-          <div>
-            <div class="skill-name">Website Design</div>
-            <div class="skill-pct">88%</div>
-          </div>
+          <div class="skill-badge"><svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z"/></svg></div>
+          <div><div class="skill-name">Website Design</div><div class="skill-pct">88%</div></div>
         </div>
-        <div class="skill-track">
-          <div class="skill-fill" style="--target-width: 88%"></div>
-        </div>
+        <div class="skill-track"><div class="skill-fill" style="--target-width:88%"></div></div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-header">
-          <div class="skill-badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-          </div>
-          <div>
-            <div class="skill-name">App Design</div>
-            <div class="skill-pct">93%</div>
-          </div>
+          <div class="skill-badge"><svg viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg></div>
+          <div><div class="skill-name">App Design</div><div class="skill-pct">93%</div></div>
         </div>
-        <div class="skill-track">
-          <div class="skill-fill" style="--target-width: 93%"></div>
-        </div>
+        <div class="skill-track"><div class="skill-fill" style="--target-width:93%"></div></div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-header">
-          <div class="skill-badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3z"/></svg>
-          </div>
-          <div>
-            <div class="skill-name">Graphic Design</div>
-            <div class="skill-pct">91%</div>
-          </div>
+          <div class="skill-badge"><svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7zm1-11h-2v3H8v2h3v3h2v-3h3v-2h-3z"/></svg></div>
+          <div><div class="skill-name">Graphic Design</div><div class="skill-pct">91%</div></div>
         </div>
-        <div class="skill-track">
-          <div class="skill-fill" style="--target-width: 91%"></div>
-        </div>
+        <div class="skill-track"><div class="skill-fill" style="--target-width:91%"></div></div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-header">
-          <div class="skill-badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-          </div>
-          <div>
-            <div class="skill-name">Web &amp; Mobile Developer</div>
-            <div class="skill-pct">92%</div>
-          </div>
+          <div class="skill-badge"><svg viewBox="0 0 24 24"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg></div>
+          <div><div class="skill-name">Web &amp; Mobile Developer</div><div class="skill-pct">92%</div></div>
         </div>
-        <div class="skill-track">
-          <div class="skill-fill" style="--target-width: 92%"></div>
-        </div>
+        <div class="skill-track"><div class="skill-fill" style="--target-width:92%"></div></div>
       </div>
-
       <div class="skill-card">
         <div class="skill-card-header">
-          <div class="skill-badge">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
-          </div>
-          <div>
-            <div class="skill-name">UI Design</div>
-            <div class="skill-pct">87%</div>
-          </div>
+          <div class="skill-badge"><svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg></div>
+          <div><div class="skill-name">UI Design</div><div class="skill-pct">87%</div></div>
         </div>
-        <div class="skill-track">
-          <div class="skill-fill" style="--target-width: 87%"></div>
-        </div>
+        <div class="skill-track"><div class="skill-fill" style="--target-width:87%"></div></div>
       </div>
-
     </div>
   </div>
 
   <script>
+    function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
     function switchTab(tab, btn) {
-      // Update buttons
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-
-      // Update panels
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       const panel = document.getElementById(tab + '-panel');
       panel.classList.add('active');
-
-      // Animate skill bars when Skills tab is opened
       if (tab === 'skills') {
         setTimeout(() => {
           panel.querySelectorAll('.skill-fill').forEach((bar, i) => {
             bar.classList.remove('animate');
-            void bar.offsetWidth; // reflow to restart
+            void bar.offsetWidth;
             setTimeout(() => bar.classList.add('animate'), i * 100);
           });
         }, 50);
       }
     }
-
-   
   </script>
-
 </body>
 </html>
