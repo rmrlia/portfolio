@@ -28,7 +28,11 @@
       min-height: 100vh;
       overflow-x: hidden;
     }
-
+ /* FOOTER */
+    footer { background: #4a4f56; padding: 26px 64px; text-align: center; }
+    .footer-text { font-size: 15px; color: #cdd1d6; letter-spacing: 0.2px; }
+    .footer-text a { color: var(--sky); text-decoration: none; font-weight: 700; }
+    .footer-text a:hover { color: var(--sky-light); }
     /* NAV */
     nav {
       display: flex; align-items: center; justify-content: space-between;
@@ -267,7 +271,9 @@
       </div>
     </div>
   </div>
-
+<footer>
+    <p class="footer-text">&copy; 2026 <a href="index.html">Abegail</a> All Rights Reserved , Inc.</p>
+  </footer>
   <script>
     function toggleMenu() { document.getElementById('navMenu').classList.toggle('open'); }
     function switchTab(tab, btn) {
